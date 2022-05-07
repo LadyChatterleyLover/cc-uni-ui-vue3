@@ -5,12 +5,12 @@
     :animation="animationData"
     @click="handleClick"
   >
-   <slot></slot>
+    <slot></slot>
   </view>
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref, watch } from 'vue'
+import { onMounted, ref, watch, onUnmounted } from 'vue'
 
 const props = withDefaults(
   defineProps<{
@@ -46,22 +46,37 @@ const handleClick = (e: Event) => {
   emits('click', e)
 }
 
-watch(
+let cleanup = () => {}
+
+const stopWatch = watch(
   () => props.modelValue,
   (val) => {
+    let timer1: number | null = null
+    let timer2: number | null = null
     if (val) {
-      animation.value.opacity(1).step()
-      animationData.value = animation.value.export()
       display.value = 'block'
+      timer1 = setTimeout(() => {
+        animation.value.opacity(1).step()
+        animationData.value = animation.value.export()
+      }, 50)
     } else {
       animation.value.opacity(0).step()
       animationData.value = animation.value.export()
-      setTimeout(() => {
+      timer2 = setTimeout(() => {
         display.value = 'none'
       }, Number(props.duration) + 100)
     }
+    cleanup = () => {
+      clearTimeout(timer1 as number)
+      clearTimeout(timer2 as number)
+    }
   }
 )
+
+onUnmounted(() => {
+  stopWatch()
+  cleanup()
+})
 </script>
 
 <style scoped lang="scss">
