@@ -17,6 +17,12 @@
 			"style": {
 				"navigationBarTitleText": "cell"
 			}
+		},
+		{
+			"path": "pages/layout/index",
+			"style": {
+				"navigationBarTitleText": "layout"
+			}
 		}
 	],
 	"globalStyle": {
