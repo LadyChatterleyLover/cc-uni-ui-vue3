@@ -4,7 +4,7 @@
   "scripts": {
     "dev:app": "uni -p app",
     "dev:custom": "uni -p",
-    "dev:h5": "uni",
+    "dev": "uni",
     "dev:h5:ssr": "uni --ssr",
     "dev:mp-alipay": "uni -p mp-alipay",
     "dev:mp-baidu": "uni -p mp-baidu",
@@ -12,7 +12,7 @@
     "dev:mp-lark": "uni -p mp-lark",
     "dev:mp-qq": "uni -p mp-qq",
     "dev:mp-toutiao": "uni -p mp-toutiao",
-    "dev:weapp": "uni -p mp-weixin",
+    "weapp": "uni -p mp-weixin",
     "dev:quickapp-webview": "uni -p quickapp-webview",
     "dev:quickapp-webview-huawei": "uni -p quickapp-webview-huawei",
     "dev:quickapp-webview-union": "uni -p quickapp-webview-union",
