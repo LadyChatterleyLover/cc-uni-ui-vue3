@@ -11,6 +11,12 @@
 			"style": {
 				"navigationBarTitleText": "button"
 			}
+		},
+		{
+			"path": "pages/cell/index",
+			"style": {
+				"navigationBarTitleText": "cell"
+			}
 		}
 	],
 	"globalStyle": {
