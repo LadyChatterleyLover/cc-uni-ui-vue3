@@ -1,7 +1,8 @@
 import { App } from 'vue'
+import ccButton from './cc-button'
 import ccIcon from './cc-icon'
 
-const components = [ccIcon]
+const components = [ccIcon, ccButton]
 
 export default {
   install(app: App) {

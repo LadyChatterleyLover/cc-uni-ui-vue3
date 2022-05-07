@@ -5,6 +5,12 @@
 			"style": {
 				"navigationBarTitleText": "uni-app"
 			}
+		},
+		{
+			"path": "pages/button/index",
+			"style": {
+				"navigationBarTitleText": "button"
+			}
 		}
 	],
 	"globalStyle": {
