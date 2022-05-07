@@ -175,9 +175,9 @@ const list: ListItem[] = [
         url: '/pages/notify/index',
       },
       {
-        title: 'Mask',
+        title: 'Overlay',
         label: '遮罩层',
-        url: '/pages/mask/index',
+        url: '/pages/overlay/index',
       },
       {
         title: 'PullRefresh',

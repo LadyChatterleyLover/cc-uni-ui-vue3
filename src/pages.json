@@ -23,6 +23,18 @@
 			"style": {
 				"navigationBarTitleText": "layout"
 			}
+		},
+		{
+			"path": "pages/popup/index",
+			"style": {
+				"navigationBarTitleText": "popup"
+			}
+		},
+		{
+			"path": "pages/overlay/index",
+			"style": {
+				"navigationBarTitleText": "overlay"
+			}
 		}
 	],
 	"globalStyle": {
