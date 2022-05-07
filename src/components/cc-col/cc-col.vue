@@ -48,8 +48,4 @@ const offset = computed(() => {
 })
 </script>
 
-<style scoped lang="scss">
-.cc-col {
-  width: 100%;
-}
-</style>
+<style scoped lang="scss"></style>
