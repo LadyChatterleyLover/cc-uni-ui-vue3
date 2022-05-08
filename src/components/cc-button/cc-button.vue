@@ -1,7 +1,6 @@
 <template>
   <button
     class="cc-button"
-    :native-type="nativeType"
     :hover-class="hoverClassName"
     :loading="loading"
     :class="[
@@ -32,6 +31,27 @@ interface ColorList {
   type: string
   color: string
 }
+/**
+ * Tag 按钮
+ * @description 该组件是基于uni-button二次封装,支持更多扩展和自定义。
+ *
+ * @property {String}    type          按钮类型          可选值 default | primary | success | error | warning | info 默认为default
+ * @property {String}    size          按钮尺寸          可选值 default | mini | small | large 默认为default
+ * @property {String}    text          按钮文本          默认为'' 
+ * @property {String}    icon          按钮图标          同icon组件type属性 
+ * @property {Boolean}   plain         是否是朴素按钮     默认为false
+ * @property {Boolean}   round         是否是圆角按钮     默认为false
+ * @property {Boolean}   block         是否是块级按钮     默认为false
+ * @property {Boolean}   disabled      是否是禁用按钮     默认为false
+ * @property {Boolean}   loading       是否是加载状态     默认为false
+ * @property {String}    color         按钮颜色          默认为''
+ * @property {String}    hoverClass    点击时的类名       默认为''
+ * @property {String}    hoverClass    点击时的类名       默认为''
+ * @property {Object}    customStyle   自定义样式        默认为{}
+ 
+ *
+ * @event {Function}	click   点击按钮触发 参数为事件参数
+ */
 
 const props = withDefaults(
   defineProps<{
@@ -40,18 +60,11 @@ const props = withDefaults(
     text?: string
     color?: string
     icon?: string
-    iconPosition?: 'right' | 'left'
-    nativeType?: 'button' | 'reset' | 'submit'
     block?: boolean
     plain?: boolean
-    square?: boolean
     round?: boolean
     disabled?: boolean
     loading?: boolean
-    loadingText?: string
-    loadingType?: 'spinner' | 'circular'
-    loadingSize?: number | string
-    url?: string
     hoverClass?: string
     customStyle?: CSSProperties
   }>(),
@@ -61,15 +74,11 @@ const props = withDefaults(
     text: '',
     color: '',
     icon: '',
-    iconPosition: 'left',
-    nativeType: 'button',
     block: false,
     plain: false,
-    square: false,
     round: false,
     disabled: false,
     loading: false,
-    url: '',
     hoverClass: '',
   }
 )
