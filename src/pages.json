@@ -83,6 +83,12 @@
 			"style": {
 				"navigationBarTitleText": "loading"
 			}
+		},
+		{
+			"path": "pages/gap/index",
+			"style": {
+				"navigationBarTitleText": "gap"
+			}
 		}
 	],
 	"globalStyle": {
