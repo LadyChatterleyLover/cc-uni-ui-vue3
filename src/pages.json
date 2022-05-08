@@ -59,6 +59,12 @@
 			"style": {
 				"navigationBarTitleText": "modal"
 			}
+		},
+		{
+			"path": "pages/openMore/index",
+			"style": {
+				"navigationBarTitleText": "openMore"
+			}
 		}
 	],
 	"globalStyle": {
