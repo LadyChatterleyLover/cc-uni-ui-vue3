@@ -72,7 +72,7 @@ const stopWatch = watch(
       animationData.value = animation.value.export()
       timer2 = setTimeout(() => {
         visible.value = false
-      }, Number(props.duration) + 100)
+      }, Number(props.duration) + 50)
     }
     cleanup = () => {
       clearTimeout(timer1 as number)

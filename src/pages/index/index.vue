@@ -140,9 +140,9 @@ const list: ListItem[] = [
         url: '/pages/actionSheet/index',
       },
       {
-        title: 'Dialog',
+        title: 'modal',
         label: '弹出框',
-        url: '/pages/dialog/index',
+        url: '/pages/modal/index',
       },
       {
         title: 'Alert',

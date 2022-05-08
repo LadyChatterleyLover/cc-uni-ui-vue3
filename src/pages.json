@@ -53,6 +53,12 @@
 			"style": {
 				"navigationBarTitleText": "actionSheet"
 			}
+		},
+		{
+			"path": "pages/modal/index",
+			"style": {
+				"navigationBarTitleText": "modal"
+			}
 		}
 	],
 	"globalStyle": {
