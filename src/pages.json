@@ -41,6 +41,12 @@
 			"style": {
 				"navigationBarTitleText": "tag"
 			}
+		},
+		{
+			"path": "pages/toast/index",
+			"style": {
+				"navigationBarTitleText": "toast"
+			}
 		}
 	],
 	"globalStyle": {
