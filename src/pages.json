@@ -47,6 +47,12 @@
 			"style": {
 				"navigationBarTitleText": "toast"
 			}
+		},
+		{
+			"path": "pages/actionSheet/index",
+			"style": {
+				"navigationBarTitleText": "actionSheet"
+			}
 		}
 	],
 	"globalStyle": {
