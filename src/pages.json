@@ -35,6 +35,12 @@
 			"style": {
 				"navigationBarTitleText": "overlay"
 			}
+		},
+		{
+			"path": "pages/tag/index",
+			"style": {
+				"navigationBarTitleText": "tag"
+			}
 		}
 	],
 	"globalStyle": {
