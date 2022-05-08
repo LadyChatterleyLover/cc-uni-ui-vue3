@@ -101,6 +101,12 @@
 			"style": {
 				"navigationBarTitleText": "countDown"
 			}
+		},
+		{
+			"path": "pages/countup/index",
+			"style": {
+				"navigationBarTitleText": "countup"
+			}
 		}
 	],
 	"globalStyle": {
