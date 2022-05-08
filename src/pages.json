@@ -65,6 +65,24 @@
 			"style": {
 				"navigationBarTitleText": "openMore"
 			}
+		},
+		{
+			"path": "pages/divider/index",
+			"style": {
+				"navigationBarTitleText": "divider"
+			}
+		},
+		{
+			"path": "pages/loadMore/index",
+			"style": {
+				"navigationBarTitleText": "loadMore"
+			}
+		},
+		{
+			"path": "pages/loading/index",
+			"style": {
+				"navigationBarTitleText": "loading"
+			}
 		}
 	],
 	"globalStyle": {
