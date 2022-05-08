@@ -114,7 +114,7 @@
       <view class="title">跳转路径</view>
       <view class="item">
         <view>
-          <cc-button @click="open({ title: '吃鲸鱼的人', url: '/' })">跳转首页</cc-button>
+          <cc-button @click="open({ title: '吃鲸鱼的人', url: '/pages/index/index' })">跳转首页</cc-button>
         </view>
         <view>
           <cc-button @click="open({ title: '吃鲸鱼的人', url: '/', query: { a: 1, b: 2 } })">query带参数</cc-button>
@@ -149,7 +149,7 @@ const open = (options: ToastOptions) => {
     // 持续时间
     duration: options.duration || 2000,
     // 结束跳转url
-    url: options.url || '',
+    url: options.url || '/pages/index/index',
     // 跳转传参
     query: options.query || null,
     // toast结束回调

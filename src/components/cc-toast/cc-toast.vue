@@ -64,7 +64,7 @@ const show = (options: ToastOptions) => {
     position = 'center',
     url = '',
     back = false,
-    query = {},
+    query = null,
     callback,
   } = options
   if (position === 'top') {
@@ -141,7 +141,7 @@ const show = (options: ToastOptions) => {
           q += `${i}=${query[i]}&`
         }
         uni.navigateTo({
-          url: `${url}?${q.slice(0, -1)}`,
+          url: query ? `${url}?${q.slice(0, -1)}` : url,
         })
       }
     }
