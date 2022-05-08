@@ -107,6 +107,12 @@
 			"style": {
 				"navigationBarTitleText": "countup"
 			}
+		},
+		{
+			"path": "pages/timeLine/index",
+			"style": {
+				"navigationBarTitleText": "timeLine"
+			}
 		}
 	],
 	"globalStyle": {
