@@ -95,6 +95,12 @@
 			"style": {
 				"navigationBarTitleText": "link"
 			}
+		},
+		{
+			"path": "pages/countDown/index",
+			"style": {
+				"navigationBarTitleText": "countDown"
+			}
 		}
 	],
 	"globalStyle": {
