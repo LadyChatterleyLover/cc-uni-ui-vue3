@@ -65,6 +65,14 @@
         <cc-button @click="open11">自定义高度</cc-button>
       </view>
     </view>
+
+     <view>
+      <view class="title">圆角弹框</view>
+      <view class="item">
+        <cc-popup round mode="bottom" v-model="show12">一丝不挂</cc-popup>
+        <cc-button @click="open12">圆角弹框</cc-button>
+      </view>
+    </view>
   </view>
 </template>
 
@@ -81,6 +89,7 @@ const show8 = ref<boolean>(false)
 const show9 = ref<boolean>(false)
 const show10 = ref<boolean>(false)
 const show11 = ref<boolean>(false)
+const show12 = ref<boolean>(false)
 const open1 = () => {
   show1.value = true
 }
@@ -114,20 +123,20 @@ const open10 = () => {
 const open11 = () => {
   show11.value = true
 }
+const open12 = () => {
+  show12.value = true
+}
 </script>
 
 <style scoped lang="scss">
 .title {
-  margin: #{topx(10)};
+  margin: 20rpx;
 }
 .item {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  margin: #{topx(10)};
-  view {
-    margin: #{topx(5)};
-  }
+  margin: 20rpx;
 }
 .flex {
   display: flex;

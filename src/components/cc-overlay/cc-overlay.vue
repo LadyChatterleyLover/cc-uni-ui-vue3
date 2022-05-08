@@ -1,7 +1,9 @@
 <template>
   <view
+    v-if="visible"
     class="cc-overlay"
-    :style="{ zIndex: Number(zIndex), background, display }"
+    :class="{ flex }"
+    :style="{ zIndex: Number(zIndex), background }"
     :animation="animationData"
     @click="handleClick"
   >
@@ -18,12 +20,16 @@ const props = withDefaults(
     zIndex?: string | number
     duration?: string | number
     background?: string
+    flex?: boolean
+    closeOnClickOverlay?: boolean
   }>(),
   {
     modelValue: false,
     zIndex: 999,
     duration: 300,
     background: 'rgba(0,0,0,.5)',
+    flex: true,
+    closeOnClickOverlay: true,
   }
 )
 
@@ -32,7 +38,7 @@ const emits = defineEmits(['update:modelValue', 'click'])
 const zIndex = ref<number>(Number(props.zIndex))
 const animation = ref<any>({})
 const animationData = ref<any>({})
-const display = ref<'block' | 'none'>('none')
+const visible = ref<boolean>(false)
 
 onMounted(() => {
   animation.value = uni.createAnimation({
@@ -42,7 +48,9 @@ onMounted(() => {
 })
 
 const handleClick = (e: Event) => {
-  emits('update:modelValue', !props.modelValue)
+  if (props.closeOnClickOverlay) {
+    emits('update:modelValue', !props.modelValue)
+  }
   emits('click', e)
 }
 
@@ -54,7 +62,7 @@ const stopWatch = watch(
     let timer1: number | null = null
     let timer2: number | null = null
     if (val) {
-      display.value = 'block'
+      visible.value = true
       timer1 = setTimeout(() => {
         animation.value.opacity(1).step()
         animationData.value = animation.value.export()
@@ -63,7 +71,7 @@ const stopWatch = watch(
       animation.value.opacity(0).step()
       animationData.value = animation.value.export()
       timer2 = setTimeout(() => {
-        display.value = 'none'
+        visible.value = false
       }, Number(props.duration) + 100)
     }
     cleanup = () => {
@@ -87,6 +95,8 @@ onUnmounted(() => {
   left: 0;
   right: 0;
   opacity: 0;
+}
+.flex {
   display: flex;
   align-items: center;
   justify-content: center;
