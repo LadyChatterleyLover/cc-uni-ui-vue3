@@ -6,6 +6,7 @@
       'margin-right': margin,
       'justify-content': justifyValue,
     }"
+    @click="handleClick"
   >
     <slot></slot>
   </view>
@@ -26,9 +27,12 @@ const props = withDefaults(
   }
 )
 
+const emits = defineEmits(['click'])
+
+
 const margin = computed(() => {
   if (props.gutter) {
-    return '-' + (props.gutter as number) / 2 + 'px'
+    return  (props.gutter as number) + 'rpx'
   }
   return 0
 })
@@ -40,11 +44,16 @@ const justifyValue = computed(() => {
 })
 
 provide('gutter', props.gutter!)
+
+const handleClick = (e) => {
+  emits('click', e)
+}
 </script>
 
 <style scoped lang="scss">
 .cc-row {
   display: flex;
   height: 100%;
+  box-sizing: border-box;
 }
 </style>
