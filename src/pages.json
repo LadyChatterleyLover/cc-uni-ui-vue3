@@ -113,6 +113,12 @@
 			"style": {
 				"navigationBarTitleText": "timeLine"
 			}
+		},
+		{
+			"path": "pages/subsection/index",
+			"style": {
+				"navigationBarTitleText": "subsection"
+			}
 		}
 	],
 	"globalStyle": {

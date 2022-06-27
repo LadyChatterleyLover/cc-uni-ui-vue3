@@ -1,91 +1,91 @@
 <template>
- <view>
-   <!-- #ifdef H5 -->
-   <view :id="id" class="cc-countup"></view>
-   <!-- #endif -->
-   <!-- #ifndef H5 -->
-   <view>{{number}}</view>
-   <!-- #endif -->
- </view>
+  <view>
+    <!-- #ifdef H5 -->
+    <view :id="id" class="cc-countup"></view>
+    <!-- #endif -->
+    <!-- #ifndef H5 -->
+    <view>{{ number }}</view>
+    <!-- #endif -->
+  </view>
 </template>
 
 <script>
 // #ifdef H5
-import { CountUp } from 'countup.js'
+import { CountUp } from "countup.js"
 // #endif
 // #ifndef H5
-import WxCountUp from './wxCountup.js'
+import WxCountUp from "./wxCountup.js"
 // #endif
 export default {
-  name: 'cc-countup',
+  name: "cc-countup",
   components: {},
   props: {
     // 是否自动滚动
     autoplay: {
       type: Boolean,
-      default: true
+      default: true,
     },
     // 滚动开始值
     startVal: {
-      type: Number
+      type: Number,
     },
     // 滚动结束值
     endVal: {
-      type: Number
+      type: Number,
     },
     // 滚动持续时长
     duration: {
       type: Number,
-      default: 2
+      default: 2,
     },
     // 使用过渡动画
     useEasing: {
       type: Boolean,
-      default: true
+      default: true,
     },
     // 千分位分隔符
     useGrouping: {
       type: Boolean,
-      default: true
+      default: true,
     },
     // 千分位分割符号
     separator: {
       type: String,
-      default: ','
+      default: ",",
     },
     // 小数位数
     decimalPlaces: {
       type: Number,
-      default: 0
+      default: 0,
     },
     // 小数位分割符号
     decimal: {
       type: String,
-      default: '.'
+      default: ".",
     },
     // 前缀内容
     prefix: {
       type: String,
-      default: ''
+      default: "",
     },
     // 后缀内容
     suffix: {
       type: String,
-      default: ''
+      default: "",
     },
     // 结束时回调
     end: {
-      type: Function
-    }
+      type: Function,
+    },
   },
   data() {
     return {
       countup: null,
-      number: 0
+      number: 0,
     }
   },
   methods: {
-    toJSON(){}
+    toJSON() {},
   },
   mounted() {
     let options = {
@@ -97,7 +97,7 @@ export default {
       decimalPlaces: this.decimalPlaces,
       decimal: this.decimal,
       prefix: this.prefix,
-      suffix: this.suffix
+      suffix: this.suffix,
     }
     // #ifdef H5
     this.countup = new CountUp(this.id, this.endVal, options)
@@ -108,14 +108,14 @@ export default {
     }
     // #endif
     // #ifndef H5
-     this.countup = new WxCountUp('number', this.endVal, options, this)
-     if (!this.countup.error) {
-       if (this.autoplay) {
-         this.countup.start(this.end)
-       }
-     } else {
-       console.error(this.countup.error)
-     }
+    this.countup = new WxCountUp("number", this.endVal, options, this)
+    if (!this.countup.error) {
+      if (this.autoplay) {
+        this.countup.start(this.end)
+      }
+    } else {
+      console.error(this.countup.error)
+    }
     // #endif
   },
   onLoad() {},
@@ -123,11 +123,10 @@ export default {
   filters: {},
   computed: {
     id() {
-      return 'cc-countup-' + this._uid
-    }
+      return "cc-countup-" + Math.random() * 10000
+    },
   },
-  watch: {
-  }
+  watch: {},
 }
 </script>
 

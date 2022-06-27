@@ -4,4 +4,9 @@ onLaunch(() => {})
 onShow(() => {})
 onHide(() => {})
 </script>
-<style></style>
+
+<style>
+uni-button::after {
+  content: none !important;
+}
+</style>
