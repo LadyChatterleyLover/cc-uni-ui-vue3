@@ -119,6 +119,12 @@
 			"style": {
 				"navigationBarTitleText": "subsection"
 			}
+		},
+		{
+			"path": "pages/checkbox/index",
+			"style": {
+				"navigationBarTitleText": "checkbox"
+			}
 		}
 	],
 	"globalStyle": {

@@ -14,4 +14,7 @@ page {
   padding: 0;
   box-sizing: border-box;
 }
+cc-divider {
+  width: 100%;
+}
 </style>

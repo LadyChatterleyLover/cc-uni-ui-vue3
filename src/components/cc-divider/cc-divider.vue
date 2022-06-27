@@ -18,7 +18,7 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, CSSProperties } from 'vue'
+import { computed } from 'vue'
 type Align = 'center' | 'left' | 'right'
 
 const props = withDefaults(
@@ -46,7 +46,7 @@ let widthValue = computed(() => {
 })
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 .cc-divider {
   width: 100%;
   &-nocontent {

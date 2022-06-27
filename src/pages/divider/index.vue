@@ -56,7 +56,7 @@
 
 <script lang="ts" setup></script>
 
-<style scoped lang="scss">
+<style lang="scss">
 .title {
   margin: 20rpx;
 }
@@ -66,7 +66,5 @@
   align-items: center;
   margin: 20rpx;
 }
-cc-divider {
-  width: 100%;
-}
+
 </style>
