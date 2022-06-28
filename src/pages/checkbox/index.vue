@@ -1,6 +1,6 @@
 <template>
   <view>
-    <!-- <view style="margin-bottom: 40rpx">
+    <view style="margin-bottom: 40rpx">
       <view class="title">基础用法</view>
       <view class="item">
         <cc-checkbox v-model="checked1">复选框</cc-checkbox>
@@ -72,7 +72,7 @@
           <cc-checkbox name="b">复选框 b</cc-checkbox>
         </cc-checkbox-group>
       </view>
-    </view> -->
+    </view>
 
     <view style="margin-bottom: 40rpx">
       <view class="title">水平排列</view>
@@ -83,35 +83,11 @@
         </cc-checkbox-group>
       </view>
     </view>
-
-    <view style="margin-bottom: 40rpx">
-      <view class="title">水平排列</view>
-      <view class="item">
-        <cc-checkbox-group v-model="checked11" direction="horizontal" :max="2" @change="handleChange">
-          <cc-checkbox name="a">复选框 a</cc-checkbox>
-          <cc-checkbox name="b">复选框 b</cc-checkbox>
-          <cc-checkbox name="c">复选框 c</cc-checkbox>
-        </cc-checkbox-group>
-      </view>
-    </view>
-    {{checked12}}
-    <view style="margin-bottom: 40rpx">
-      <view class="title">全选和反选</view>
-      <view class="item">
-        <cc-checkbox-group ref="checkboxGroup" v-model="checked12" direction="horizontal">
-          <cc-checkbox name="a">复选框 a</cc-checkbox>
-          <cc-checkbox name="b">复选框 b</cc-checkbox>
-          <cc-checkbox name="c">复选框 c</cc-checkbox>
-        </cc-checkbox-group>
-        <cc-button style="margin-right: 40rpx;" type="primary" @click="checkAll">全选</cc-button>
-        <cc-button type="primary" @click="toggleAll">反选</cc-button>
-      </view>
-    </view>
   </view>
 </template>
 
 <script lang="ts" setup>
-import { ref } from "vue"
+import { ref } from 'vue'
 
 const checked1 = ref(false)
 const checked2 = ref(false)
@@ -121,8 +97,8 @@ const checked5 = ref(false)
 const checked6 = ref(false)
 const checked7 = ref(false)
 const checked8 = ref(false)
-const checked9 = ref(["a", "b"])
-const checked10 = ref(["a", "b"])
+const checked9 = ref(['a', 'b'])
+const checked10 = ref(['a', 'b'])
 const checked11 = ref([])
 const checked12 = ref([])
 

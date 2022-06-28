@@ -36,7 +36,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, watch, onMounted, computed, getCurrentInstance } from "vue"
+import { ref, watch, computed, getCurrentInstance } from 'vue'
 
 const instance = getCurrentInstance()
 let parent: any = null
@@ -50,26 +50,26 @@ parent = instance.parent
 const props = withDefaults(
   defineProps<{
     modelValue?: boolean
-    shape?: "round" | "square"
+    shape?: 'round' | 'square'
     name?: any
     disabled?: boolean
     labelDisabled?: boolean
-    labelPosition?: "left" | "right"
+    labelPosition?: 'left' | 'right'
     iconSize?: number | string
     checkedColor?: string
   }>(),
   {
     modelValue: false,
-    shape: "round",
-    name: "",
+    shape: 'round',
+    name: '',
     disabled: false,
     labelDisabled: false,
-    labelPosition: "left",
+    labelPosition: 'left',
     iconSize: 40,
-    checkedColor: "#1989fa",
+    checkedColor: '#1989fa',
   }
 )
-const emits = defineEmits(["update:modelValue", "change"])
+const emits = defineEmits(['update:modelValue', 'change'])
 
 const groupProps = parent.props
 
@@ -94,7 +94,7 @@ const change = () => {
       parent.exposed.setChecked([...checkedList])
     }
   }
-  emits("change", checked.value)
+  emits('change', checked.value)
 }
 
 const clickIcon = () => {
@@ -116,7 +116,7 @@ const clickIcon = () => {
       parent.exposed.setChecked([...checkedList])
     }
   }
-  emits("change", checked.value)
+  emits('change', checked.value)
 }
 
 const computedIconSize = computed(() => {
@@ -143,12 +143,6 @@ const computedCheckedColor = computed(() => {
   }
 })
 
-onMounted(() => {
-  // if (groupProps && props.name) {
-  //   checked.value = groupProps.modelValue.find((item) => item === props.name)
-  // }
-})
-
 watch(
   () => props.modelValue,
   (val) => {
@@ -160,7 +154,7 @@ watch(
 watch(
   () => checked.value,
   (val) => {
-    emits("update:modelValue", val)
+    emits('update:modelValue', val)
   }
 )
 
@@ -179,7 +173,9 @@ watch(
   (val) => {
     if (val) {
       let value = val.modelValue
-      checked.value = value.find((item) => item === props.name)
+      if (props.name) {
+        checked.value = value.find((item) => item === props.name)
+      }
     }
   },
   { immediate: true, deep: true }
