@@ -86,7 +86,7 @@ const change = () => {
       checkedList = checkedList.filter((item) => item !== props.name)
       parent.exposed.setChecked([...checkedList])
     } else {
-      if (checkedList.length >= Number(parent.props.max)) {
+      if (parent.props.max > 0 && checkedList.length >= Number(parent.props.max)) {
         checked.value = !checked.value
         return
       }
@@ -108,7 +108,7 @@ const clickIcon = () => {
       checkedList = checkedList.filter((item) => item !== props.name)
       parent.exposed.setChecked([...checkedList])
     } else {
-      if (checkedList.length >= Number(parent.props.max)) {
+      if (parent.props.max > 0 && checkedList.length >= Number(parent.props.max)) {
         checked.value = !checked.value
         return
       }
@@ -164,18 +164,26 @@ watch(
   }
 )
 
-watch(() => props.name, val => {
-  if (val) {
-    parent.exposed.addChildName(val)
-  }
-}, {immediate: true})
+watch(
+  () => props.name,
+  (val) => {
+    if (val) {
+      parent.exposed.addChildName(val)
+    }
+  },
+  { immediate: true }
+)
 
-watch(() => groupProps, val => {
-  if (val) {
-    let value = val.modelValue
-    checked.value = value.find((item) => item === props.name)
-  }
-}, {immediate: true, deep: true})
+watch(
+  () => groupProps,
+  (val) => {
+    if (val) {
+      let value = val.modelValue
+      checked.value = value.find((item) => item === props.name)
+    }
+  },
+  { immediate: true, deep: true }
+)
 </script>
 
 <style lang="scss" scoped>
