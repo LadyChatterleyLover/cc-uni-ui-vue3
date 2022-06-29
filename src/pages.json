@@ -137,6 +137,12 @@
 			"style": {
 				"navigationBarTitleText": "switch"
 			}
+		},
+		{
+			"path": "pages/checker/index",
+			"style": {
+				"navigationBarTitleText": "checker"
+			}
 		}
 	],
 	"globalStyle": {

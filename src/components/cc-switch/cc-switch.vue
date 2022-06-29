@@ -1,19 +1,19 @@
 <template>
-  <div class="cc-switch">
-    <div
+  <view class="cc-switch">
+    <view
       class="cc-switch-wrap"
       :class="{ disabled }"
       :style="{ background: modelValue ? activeColor : inactiveColor, fontSize: size + 'rpx' }"
       @click="clickSwitch"
     >
-      <div class="cc-switch-wrap-node" :style="{ transform: `translateX(${move})` }"></div>
-    </div>
-    <div
+      <view class="cc-switch-wrap-node" :style="{ transform: `translateX(${move})` }"></view>
+    </view>
+    <view
       v-if="activeText"
       class="cc-switch-text"
       :style="{ color: modelValue ? activeTextColor : inactiveTextColor }"
-    >{{ modelValue ? activeText : inactiveText ? inactiveText : activeText }}</div>
-  </div>
+    >{{ modelValue ? activeText : inactiveText ? inactiveText : activeText }}</view>
+  </view>
 </template>
 
 <script setup lang="ts">
