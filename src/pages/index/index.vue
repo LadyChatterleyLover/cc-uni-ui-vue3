@@ -250,9 +250,9 @@ const list: ListItem[] = [
         url: '/pages/imagePreview/index',
       },
       {
-        title: 'NoticeBar',
+        title: 'NotifyBar',
         label: '通知栏',
-        url: '/pages/noticeBar/index',
+        url: '/pages/notifyBar/index',
       },
       {
         title: 'Progress',

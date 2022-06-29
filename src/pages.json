@@ -167,6 +167,12 @@
 			"style": {
 				"navigationBarTitleText": "badge"
 			}
+		},
+		{
+			"path": "pages/notifyBar/index",
+			"style": {
+				"navigationBarTitleText": "notifyBar"
+			}
 		}
 	],
 	"globalStyle": {
