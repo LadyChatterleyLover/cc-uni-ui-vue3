@@ -99,21 +99,12 @@ const checked7 = ref(false)
 const checked8 = ref(false)
 const checked9 = ref(['a', 'b'])
 const checked10 = ref(['a', 'b'])
-const checked11 = ref([])
-const checked12 = ref([])
 
-const checkboxGroup = ref()
 
 const handleChange = (val: any) => {
   console.log(val)
 }
 
-const checkAll = () => {
-  checkboxGroup.value.toggleAll(true)
-}
-const toggleAll = () => {
-  checkboxGroup.value.toggleAll()
-}
 </script>
 
 <style lang="scss" scoped>

@@ -10,11 +10,11 @@
 </template>
 
 <script lang="ts" setup>
-import { provide, reactive, watch, ref, computed } from 'vue';
+import { provide, reactive, watch, ref } from "vue"
 
 const props = withDefaults(
   defineProps<{
-    modelValue: any[]
+    modelValue: any
     disabled?: boolean
     max?: number | string
     direction?: "vertical" | "horizontal"
@@ -58,15 +58,15 @@ const addChildName = (name: any) => {
   childNameList.value.push(name)
 }
 
-const setChecked = (checkedList: any[]) => {
-  checked.value = checkedList
+const setChecked = (name: any) => {
+  checked.value = name
 }
 
 
 defineExpose({
   setChecked,
   addChildName,
-  modelValue: props.modelValue
+  modelValue: props.modelValue,
 })
 </script>
 

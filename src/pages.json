@@ -125,6 +125,12 @@
 			"style": {
 				"navigationBarTitleText": "checkbox"
 			}
+		},
+		{
+			"path": "pages/radio/index",
+			"style": {
+				"navigationBarTitleText": "radio"
+			}
 		}
 	],
 	"globalStyle": {

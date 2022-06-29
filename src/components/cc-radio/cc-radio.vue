@@ -1,12 +1,12 @@
 <template>
-  <view class="cc-checkbox" @click="change">
+  <view class="cc-radio" @click="change">
     <slot v-if="$slots.icon" name="icon" :checked="checked"></slot>
     <view
       v-else
-      class="cc-checkbox-icon"
+      class="cc-radio-icon"
       :class="[
         {
-          'cc-checkbox-icon-round': shape === 'round',
+          'cc-radio-icon-round': shape === 'round',
         },
       ]"
       :style="{
@@ -25,7 +25,7 @@
       ></cc-icon>
     </view>
     <view
-      class="cc-checkbox-label"
+      class="cc-radio-label"
       :style="{
         color: computedDisabled ? '#c8c9cc' : '#323233',
       }"
@@ -36,7 +36,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, watch, computed, getCurrentInstance } from 'vue'
+import { ref, watch, computed, getCurrentInstance } from "vue"
 
 const instance = getCurrentInstance()
 let parent: any = null
@@ -50,26 +50,25 @@ parent = instance.parent
 const props = withDefaults(
   defineProps<{
     modelValue?: boolean
-    shape?: 'round' | 'square'
-    name?: any
+    shape?: "round" | "square"
+    name: any
     disabled?: boolean
     labelDisabled?: boolean
-    labelPosition?: 'left' | 'right'
+    labelPosition?: "left" | "right"
     iconSize?: number | string
     checkedColor?: string
   }>(),
   {
     modelValue: false,
-    shape: 'round',
-    name: '',
+    shape: "round",
     disabled: false,
     labelDisabled: false,
-    labelPosition: 'left',
+    labelPosition: "left",
     iconSize: 40,
-    checkedColor: '#1989fa',
+    checkedColor: "#1989fa",
   }
 )
-const emits = defineEmits(['update:modelValue', 'change'])
+const emits = defineEmits(["update:modelValue"])
 
 const groupProps = parent.props
 
@@ -79,44 +78,14 @@ const change = () => {
   if (props.labelDisabled || props.disabled) {
     return
   }
-  let checkedList = parent.props.modelValue
-  checked.value = !checked.value
-  if (props.name) {
-    if (!checked.value) {
-      checkedList = checkedList.filter((item) => item !== props.name)
-      parent.exposed.setChecked([...checkedList])
-    } else {
-      if (parent.props.max > 0 && checkedList.length >= Number(parent.props.max)) {
-        checked.value = !checked.value
-        return
-      }
-      checkedList.push(props.name)
-      parent.exposed.setChecked([...checkedList])
-    }
-  }
-  emits('change', checked.value)
+  parent.exposed.setChecked(props.name)
 }
 
 const clickIcon = () => {
   if (props.disabled) {
     return
   }
-  let checkedList = parent.props.modelValue
-  checked.value = !checked.value
-  if (props.name) {
-    if (!checked.value) {
-      checkedList = checkedList.filter((item) => item !== props.name)
-      parent.exposed.setChecked([...checkedList])
-    } else {
-      if (parent.props.max > 0 && checkedList.length >= Number(parent.props.max)) {
-        checked.value = !checked.value
-        return
-      }
-      checkedList.push(props.name)
-      parent.exposed.setChecked([...checkedList])
-    }
-  }
-  emits('change', checked.value)
+  parent.exposed.setChecked(props.name)
 }
 
 const computedIconSize = computed(() => {
@@ -152,13 +121,6 @@ watch(
 )
 
 watch(
-  () => checked.value,
-  (val) => {
-    emits('update:modelValue', val)
-  }
-)
-
-watch(
   () => props.name,
   (val) => {
     if (val) {
@@ -173,9 +135,7 @@ watch(
   (val) => {
     if (val) {
       let value = val.modelValue
-      if (props.name) {
-        checked.value = value.find((item) => item === props.name)
-      }
+      checked.value = props.name === value
     }
   },
   { immediate: true, deep: true }
@@ -183,7 +143,7 @@ watch(
 </script>
 
 <style lang="scss" scoped>
-.cc-checkbox {
+.cc-radio {
   display: flex;
   align-items: center;
   overflow: hidden;
