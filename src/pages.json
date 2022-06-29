@@ -155,6 +155,12 @@
 			"style": {
 				"navigationBarTitleText": "rate"
 			}
+		},
+		{
+			"path": "pages/stepper/index",
+			"style": {
+				"navigationBarTitleText": "stepper"
+			}
 		}
 	],
 	"globalStyle": {
