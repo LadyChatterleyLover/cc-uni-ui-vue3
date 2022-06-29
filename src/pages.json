@@ -161,6 +161,12 @@
 			"style": {
 				"navigationBarTitleText": "stepper"
 			}
+		},
+		{
+			"path": "pages/badge/index",
+			"style": {
+				"navigationBarTitleText": "badge"
+			}
 		}
 	],
 	"globalStyle": {
