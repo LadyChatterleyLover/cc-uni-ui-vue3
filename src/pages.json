@@ -149,6 +149,12 @@
 			"style": {
 				"navigationBarTitleText": "slider"
 			}
+		},
+		{
+			"path": "pages/rate/index",
+			"style": {
+				"navigationBarTitleText": "rate"
+			}
 		}
 	],
 	"globalStyle": {
