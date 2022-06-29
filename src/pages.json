@@ -131,6 +131,12 @@
 			"style": {
 				"navigationBarTitleText": "radio"
 			}
+		},
+		{
+			"path": "pages/switch/index",
+			"style": {
+				"navigationBarTitleText": "switch"
+			}
 		}
 	],
 	"globalStyle": {
