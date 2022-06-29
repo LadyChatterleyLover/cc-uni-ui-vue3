@@ -143,6 +143,12 @@
 			"style": {
 				"navigationBarTitleText": "checker"
 			}
+		},
+		{
+			"path": "pages/slider/index",
+			"style": {
+				"navigationBarTitleText": "slider"
+			}
 		}
 	],
 	"globalStyle": {
