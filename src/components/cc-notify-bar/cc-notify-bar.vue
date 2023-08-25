@@ -1,5 +1,5 @@
 <template>
-  <view class="cc-notify-bar"  :style="{ background: bgColor }">
+  <view class="cc-notify-bar" :style="{ background: bgColor }">
     <view class="cc-notify-bar-left" @click="clickLeft">
       <view v-if="volume"><cc-icon :color="color" type="sound" size="16"></cc-icon></view>
       <view v-else>
@@ -8,7 +8,11 @@
       </view>
     </view>
     <view class="cc-notify-bar-wrap" @click="onClick">
-      <view class="cc-notify-bar-wrap-content" :style="{ color, animationDuration }" v-if="!vertical">
+      <view
+        class="cc-notify-bar-wrap-content"
+        :style="{ color, animationDuration }"
+        v-if="!vertical"
+      >
         <template v-if="list.length">
           <view>{{ list.join(',') }}</view>
         </template>
@@ -17,10 +21,18 @@
           <view v-else>{{ text }}</view>
         </template>
       </view>
-      <view v-else class="cc-notify-bar-wrap-content-vertical" :style="{ color}">
-        <swiper class="cc-notify-bar-wrap-content-vertical-swiper" vertical circular :indicator-dots="false" :autoplay="true" :interval="interval" :duration="500">
+      <view v-else class="cc-notify-bar-wrap-content-vertical" :style="{ color }">
+        <swiper
+          class="cc-notify-bar-wrap-content-vertical-swiper"
+          vertical
+          circular
+          :indicator-dots="false"
+          :autoplay="true"
+          :interval="interval"
+          :duration="500"
+        >
           <swiper-item v-for="(item, index) in list" :key="index">
-            <view class="cc-notify-bar-wrap-content-vertical-swiper-item">{{item}}</view>
+            <view class="cc-notify-bar-wrap-content-vertical-swiper-item">{{ item }}</view>
           </swiper-item>
         </swiper>
       </view>
@@ -39,13 +51,13 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, defineEmits, nextTick, onMounted, getCurrentInstance, ref } from "vue"
+import { nextTick, onMounted, getCurrentInstance, ref } from 'vue'
 
 const instance = getCurrentInstance()
 const id = instance.uid
 const props = withDefaults(
   defineProps<{
-    list?: string[],
+    list?: string[]
     volume?: boolean
     closeable?: boolean
     link?: boolean
@@ -64,22 +76,22 @@ const props = withDefaults(
     closeable: false,
     link: false,
     vertical: false,
-    text: "",
-    bgColor: "#fff7cc",
-    color: "#f60",
-    leftIcon: "",
-    rightIcon: "",
+    text: '',
+    bgColor: '#fff7cc',
+    color: '#f60',
+    leftIcon: '',
+    rightIcon: '',
     speed: 60,
     interval: 2000,
   }
 )
 
-const emits = defineEmits(["click", "clickLeft", "clickRight"])
+const emits = defineEmits(['click', 'clickLeft', 'clickRight'])
 
 // 滚动的文字宽度
 const textWidth = ref<number>(0)
 // 动画时长
-const animationDuration = ref<string>("10s")
+const animationDuration = ref<string>('10s')
 // 初始化动画时长
 const init = () => {
   nextTick(() => {
@@ -87,23 +99,24 @@ const init = () => {
       .createSelectorQuery()
       .in(instance)
       .select(`#cc-notify-bar-wrap-content-${id}`)
-      .boundingClientRect((res) => {
+      .boundingClientRect(res => {
         textWidth.value = res?.width
-      }).exec()
-    animationDuration.value = textWidth.value / (props.speed as number) + "s"
+      })
+      .exec()
+    animationDuration.value = textWidth.value / (props.speed as number) + 's'
   })
 }
 // 点击通知栏
 const onClick = () => {
-  emits("click")
+  emits('click')
 }
 // 点击左侧图标
 const clickLeft = () => {
-  if (props.volume) emits("clickLeft")
+  if (props.volume) emits('clickLeft')
 }
 // 点击右侧图标
 const clickRight = () => {
-  if (props.closeable || props.link) emits("clickRight")
+  if (props.closeable || props.link) emits('clickRight')
 }
 onMounted(() => {
   init()

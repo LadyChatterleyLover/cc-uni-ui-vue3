@@ -12,35 +12,38 @@
       v-if="activeText"
       class="cc-switch-text"
       :style="{ color: modelValue ? activeTextColor : inactiveTextColor }"
-    >{{ modelValue ? activeText : inactiveText ? inactiveText : activeText }}</view>
+      >{{ modelValue ? activeText : inactiveText ? inactiveText : activeText }}</view
+    >
   </view>
 </template>
 
 <script setup lang="ts">
-import { ref, defineProps, defineEmits, watch } from "vue"
-const props = withDefaults(defineProps<{
-  modelValue: string | number | boolean,
-  text?: string,
-  activeColor?: string,
-  inactiveColor?: string,
-  activeTextColor?: string,
-  inactiveTextColor?: string,
-  activeText?: string,
-  inactiveText?: string,
-  disabled?: boolean,
-  size?: string | number,
-}>(),{
-  text: '',
-  activeColor: '#0081ff',
-  inactiveColor: '#fff',
-  activeTextColor: '#0081ff',
-  inactiveTextColor: '#303133',
-  activeText: '',
-  inactiveText: '',
-  disabled: false,
-  size: 48
-})
-
+import { ref, watch } from 'vue'
+const props = withDefaults(
+  defineProps<{
+    modelValue: string | number | boolean
+    text?: string
+    activeColor?: string
+    inactiveColor?: string
+    activeTextColor?: string
+    inactiveTextColor?: string
+    activeText?: string
+    inactiveText?: string
+    disabled?: boolean
+    size?: string | number
+  }>(),
+  {
+    text: '',
+    activeColor: '#0081ff',
+    inactiveColor: '#fff',
+    activeTextColor: '#0081ff',
+    inactiveTextColor: '#303133',
+    activeText: '',
+    inactiveText: '',
+    disabled: false,
+    size: 48,
+  }
+)
 
 const emits = defineEmits(['update:modelValue', 'change'])
 // 移动距离
@@ -49,16 +52,23 @@ const checked = ref<boolean>(false)
 const clickSwitch = () => {
   emits('update:modelValue', !props.modelValue)
 }
-watch(() => props.modelValue, val => {
-  checked.value = val as boolean
-  move.value = props.modelValue ? '1em' : '0'
-}, { immediate: true })
-watch(() => props.modelValue, val => {
-  emits('change', val)
-})
+watch(
+  () => props.modelValue,
+  val => {
+    checked.value = val as boolean
+    move.value = props.modelValue ? '1em' : '0'
+  },
+  { immediate: true }
+)
+watch(
+  () => props.modelValue,
+  val => {
+    emits('change', val)
+  }
+)
 </script>
 
-<style scoped lang='scss'>
+<style scoped lang="scss">
 .cc-switch {
   display: flex;
   align-items: center;

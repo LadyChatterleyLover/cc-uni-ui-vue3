@@ -4,7 +4,7 @@
       class="cc-stepper-button"
       v-if="showPlus"
       :class="{
-        disabled: modelValue <= minValue || disablePlus || disabled,
+        disabled: Number(modelValue) <= minValue || disablePlus || disabled,
         'cc-stepper-button-round': round,
       }"
       :style="{
@@ -34,7 +34,7 @@
       v-if="showMinus"
       class="cc-stepper-button"
       :class="{
-        disabled: modelValue >= maxValue || disableMinus || disabled,
+        disabled: Number(modelValue) >= maxValue || disableMinus || disabled,
         'cc-stepper-button-round': round,
       }"
       :style="{
@@ -48,7 +48,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, defineProps, defineEmits, watch } from "vue"
+import { ref, watch } from 'vue'
 const props = withDefaults(
   defineProps<{
     modelValue: number | string
@@ -69,7 +69,7 @@ const props = withDefaults(
   }>(),
   {
     min: 1,
-    max: "",
+    max: '',
     step: 1,
     buttonSize: 56,
     inputWidth: 64,
@@ -85,7 +85,7 @@ const props = withDefaults(
   }
 )
 
-const emits = defineEmits(["update:modelValue", "minus", "plus", "change", "focus", "blur"])
+const emits = defineEmits(['update:modelValue', 'minus', 'plus', 'change', 'focus', 'blur'])
 const activeValue = ref<number | string>(props.modelValue)
 const minValue = ref<number>(0)
 const maxValue = ref<number>(0)
@@ -100,9 +100,9 @@ const minus = () => {
   }
   if (props.step) (activeValue.value as number) -= Number(props.step as number)
   else (activeValue.value as number)--
-  emits("minus", activeValue.value)
-  if (activeValue.value <= minValue.value) {
-    emits("update:modelValue", minValue.value)
+  emits('minus', activeValue.value)
+  if (Number(activeValue.value) <= minValue.value) {
+    emits('update:modelValue', minValue.value)
     return
   }
 }
@@ -113,12 +113,12 @@ const plus = () => {
   }
   if (props.step) (activeValue.value as number) += Number(props.step as number)
   else (activeValue.value as number)++
-  emits("plus", activeValue.value)
-  if (activeValue.value >= maxValue.value) emits("update:modelValue", maxValue.value)
+  emits('plus', activeValue.value)
+  if (Number(activeValue.value) >= maxValue.value) emits('update:modelValue', maxValue.value)
 }
 // 获取焦点事件
 const onFocus = (e: FocusEvent) => {
-  emits("focus", e)
+  emits('focus', e)
 }
 // 失去焦点事件
 const onBlur = (e: FocusEvent) => {
@@ -128,8 +128,8 @@ const onBlur = (e: FocusEvent) => {
   if (Number(activeValue.value) >= maxValue.value) {
     activeValue.value = maxValue.value
   }
-  emits("update:modelValue", Number(activeValue.value))
-  emits("blur", e)
+  emits('update:modelValue', Number(activeValue.value))
+  emits('blur', e)
 }
 // 输入事件
 const onInput = (e: Event) => {
@@ -137,32 +137,32 @@ const onInput = (e: Event) => {
     return
   }
   if (props.integer) {
-    const str = "" + activeValue.value
-    if (str.indexOf(".") !== -1) {
-      const arr = str.split("")
+    const str = '' + activeValue.value
+    if (str.indexOf('.') !== -1) {
+      const arr = str.split('')
       arr.splice(arr.length - 1)
-      const str2 = arr.join("")
+      const str2 = arr.join('')
       activeValue.value = +str2
     }
   }
   if (props.decimalLength && props.decimalLength !== Infinity) {
-    const num = String(activeValue.value).split(".")[0]
-    const str = String(activeValue.value).split(".")[1]
-    if (str && str.length > props.decimalLength) {
-      activeValue.value = num + "." + str.substring(0, props.decimalLength as number)
+    const num = String(activeValue.value).split('.')[0]
+    const str = String(activeValue.value).split('.')[1]
+    if (str && Number(str.length) > Number(props.decimalLength)) {
+      activeValue.value = num + '.' + str.substring(0, props.decimalLength as number)
     }
   }
 }
 watch(
   () => activeValue.value,
-  (val) => {
-    emits("update:modelValue", val)
-    emits("change", val)
+  val => {
+    emits('update:modelValue', val)
+    emits('change', val)
   }
 )
 watch(
   () => props.modelValue,
-  (val) => {
+  val => {
     activeValue.value = val
   }
 )

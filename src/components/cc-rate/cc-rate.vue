@@ -7,7 +7,11 @@
       class="cc-rate-active"
       @click="clickActive(item)"
     >
-      <cc-icon :class="{ disabled }" :type="activeIcon" :color="disabled ? '#c8c9cc' : activeColor"></cc-icon>
+      <cc-icon
+        :class="{ disabled }"
+        :type="activeIcon"
+        :color="disabled ? '#c8c9cc' : activeColor"
+      ></cc-icon>
     </view>
     <view
       v-for="item in count - activeCount"
@@ -22,20 +26,20 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, defineEmits, ref, watch } from "vue"
+import { ref, watch } from 'vue'
 const props = withDefaults(
   defineProps<{
     modelValue: number
-    count?: number,
-    minCount?: number,
-    activeIcon?: string,
-    inactiveIcon?: string,
-    activeColor?: string,
-    inactiveColor?: string,
-    gutter?: number | string,
-    disabled?: boolean,
-    readonly?: boolean,
-    allowHalf?: boolean,
+    count?: number
+    minCount?: number
+    activeIcon?: string
+    inactiveIcon?: string
+    activeColor?: string
+    inactiveColor?: string
+    gutter?: number | string
+    disabled?: boolean
+    readonly?: boolean
+    allowHalf?: boolean
   }>(),
   {
     count: 5,
@@ -51,7 +55,7 @@ const props = withDefaults(
   }
 )
 
-const emits = defineEmits(["change"])
+const emits = defineEmits(['change'])
 const activeCount = ref<number>(props.modelValue)
 if (props.minCount && props.modelValue <= props.minCount) activeCount.value = props.minCount
 const clickActive = (item: number) => {
@@ -74,8 +78,8 @@ const clickInActive = (item: number) => {
 }
 watch(
   () => activeCount.value,
-  (val) => {
-    emits("change", val)
+  val => {
+    emits('change', val)
   }
 )
 </script>

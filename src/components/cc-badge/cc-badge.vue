@@ -14,36 +14,37 @@
       class="cc-badge-dot"
       :style="{
         background: bgColor,
-        top:offset[0] + 'px',
-        right: offset[1] + 'px'
+        top: offset[0] + 'px',
+        right: offset[1] + 'px',
       }"
     ></view>
   </view>
 </template>
 
 <script setup lang="ts">
-import { defineProps, computed } from 'vue'
-const props = withDefaults(defineProps<{
-  content?: number | string,
-  max?: number | string,
-  dot?: boolean,
-  bgColor?: string,
-  color?: string,
-  offset?: number[] | string[]
-}>(), {
-  content: '',
-  max: '',
-  dot: false,
-  bgColor: '',
-  color: '',
-  offset: () => []
-})
-
-
+import { computed } from 'vue'
+const props = withDefaults(
+  defineProps<{
+    content?: number | string
+    max?: number | string
+    dot?: boolean
+    bgColor?: string
+    color?: string
+    offset?: number[] | string[]
+  }>(),
+  {
+    content: '',
+    max: '',
+    dot: false,
+    bgColor: '',
+    color: '',
+    offset: () => [],
+  }
+)
 
 const showContent = computed(() => {
   if (props.max && typeof props.content === 'number') {
-    if (props.content < props.max) return props.content
+    if (Number(props.content) < Number(props.max)) return props.content
     else return props.max + '+'
   } else {
     return props.content

@@ -25,7 +25,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, defineProps, defineEmits, computed, getCurrentInstance, nextTick, watch, useSlots } from "vue"
+import { ref, computed, getCurrentInstance, nextTick, watch, useSlots } from 'vue'
 const instance = getCurrentInstance()
 const id = instance!.uid
 
@@ -42,15 +42,15 @@ const props = withDefaults(
   }>(),
   {
     step: 1,
-    activeColor: "#0081ff",
-    inactiveColor: "#e5e5e5",
+    activeColor: '#0081ff',
+    inactiveColor: '#e5e5e5',
     disabled: false,
     min: 0,
     max: 100,
     height: 4,
   }
 )
-const emits = defineEmits(["update:modelValue", "change", "input", "touchstart", "touchend"])
+const emits = defineEmits(['update:modelValue', 'change', 'input', 'touchstart', 'touchend'])
 const slots = useSlots()
 
 // 滑块移动占比
@@ -62,13 +62,13 @@ const containerWidth = ref<number>(0)
 // 是否需要动画
 const isTransition = ref<boolean>(true)
 // 拖动状态
-const touchStatus = ref<"" | "end">("")
+const touchStatus = ref<'' | 'end'>('')
 nextTick(() => {
   uni
     .createSelectorQuery()
     .in(instance)
     .select(`#cc-slider-${id}`)
-    .boundingClientRect((res) => {
+    .boundingClientRect(res => {
       containerWidth.value = res.width
     })
     .exec()
@@ -82,7 +82,7 @@ const touchstart = (e: TouchEvent) => {
     return
   }
   startX.value = e.touches[0].pageX
-  emits("touchstart")
+  emits('touchstart')
 }
 // 拖动中
 const touchmove = (e: TouchEvent) => {
@@ -92,10 +92,15 @@ const touchmove = (e: TouchEvent) => {
   isTransition.value = false
   const dis: number = Math.ceil(startX.value - e.touches[0].pageX)
   if (props.step === undefined) {
-    move.value = Math.abs((((dis - startX.value) / containerWidth.value) as any).toFixed(2) * 100).toFixed(0)
+    move.value = Math.abs(
+      (((dis - startX.value) / containerWidth.value) as any).toFixed(2) * 100
+    ).toFixed(0)
   } else {
-    const d = Math.abs((((dis - startX.value) / containerWidth.value) as any).toFixed(2) * 100).toFixed(0)
-    const percent = Math.round((Number(d) + Number(props.step)) / Number(props.step)) * Number(props.step)
+    const d = Math.abs(
+      (((dis - startX.value) / containerWidth.value) as any).toFixed(2) * 100
+    ).toFixed(0)
+    const percent =
+      Math.round((Number(d) + Number(props.step)) / Number(props.step)) * Number(props.step)
     if (percent % Number(props.step) === 0) {
       move.value = percent
     }
@@ -110,7 +115,7 @@ const touchmove = (e: TouchEvent) => {
   } else {
     if (Number(move.value) <= 0) move.value = 0
   }
-  emits("input", Number(move.value))
+  emits('input', Number(move.value))
 }
 // 拖动结束
 const touchend = () => {
@@ -118,29 +123,32 @@ const touchend = () => {
     return
   }
   isTransition.value = true
-  touchStatus.value = "end"
-  emits("touchend")
+  touchStatus.value = 'end'
+  emits('touchend')
 }
 // 点击滑块
 const clickSlider = (e: MouseEvent) => {
   isTransition.value = false
   const dis: number = Math.ceil(startX.value - e.pageX)
-  const d = Math.abs((((dis - startX.value) / containerWidth.value) as any).toFixed(2) * 100).toFixed(0)
-  const percent = Math.round((Number(d) + Number(props.step)) / Number(props.step)) * Number(props.step)
+  const d = Math.abs(
+    (((dis - startX.value) / containerWidth.value) as any).toFixed(2) * 100
+  ).toFixed(0)
+  const percent =
+    Math.round((Number(d) + Number(props.step)) / Number(props.step)) * Number(props.step)
   if (percent % Number(props.step) === 0) {
     move.value = percent
   }
 }
 watch(
   () => [move.value, touchStatus.value],
-  (val) => {
-    emits("update:modelValue", val[0])
-    if (val[1] === "end") emits("change", Number(val[0]))
+  val => {
+    emits('update:modelValue', val[0])
+    if (val[1] === 'end') emits('change', Number(val[0]))
   }
 )
 watch(
   () => props.modelValue,
-  (val) => {
+  val => {
     move.value = val
   },
   { immediate: true }
