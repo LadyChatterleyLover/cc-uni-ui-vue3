@@ -130,7 +130,7 @@ onMounted(() => {
   align-items: center;
   height: 40px;
   padding: 0 32rpx;
-  font-size: 14px;
+  font-size: 28rpx;
   &-left {
     margin-right: 16rpx;
   }

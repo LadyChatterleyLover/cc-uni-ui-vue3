@@ -1,5 +1,5 @@
 <template>
-  <view style='padding: 40rpx;'>
+  <view style="padding: 40rpx">
     <view>
       <view class="title">基础用法</view>
       <view>
@@ -8,7 +8,7 @@
       </view>
     </view>
 
-    <view style="margin-top: 40rpx;">
+    <view style="margin-top: 40rpx">
       <view class="title">嵌套内容</view>
       <view>
         <cc-overlay v-model="show2">
@@ -46,7 +46,7 @@ const handleClick = () => {
   flex-wrap: wrap;
   align-items: center;
   margin: 20rpx;
-  div {
+  view {
     margin: 10rpx;
   }
 }

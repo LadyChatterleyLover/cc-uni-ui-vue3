@@ -14,12 +14,18 @@
     :style="{ background: color, ...customColor, ...customStyle }"
     @click="handleClick"
   >
-    <div class="cc-button-content">
-      <cc-icon v-if="icon" class="cc-button-icon" :color="iconColor" :type="icon" :size="iconSize"></cc-icon>
+    <view class="cc-button-content">
+      <cc-icon
+        v-if="icon"
+        class="cc-button-icon"
+        :color="iconColor"
+        :type="icon"
+        :size="iconSize"
+      ></cc-icon>
       <text :class="{ 'cc-button-text': icon }">
         <slot></slot>
       </text>
-    </div>
+    </view>
   </button>
 </template>
 
@@ -37,8 +43,8 @@ interface ColorList {
  *
  * @property {String}    type          按钮类型          可选值 default | primary | success | error | warning | info 默认为default
  * @property {String}    size          按钮尺寸          可选值 default | mini | small | large 默认为default
- * @property {String}    text          按钮文本          默认为'' 
- * @property {String}    icon          按钮图标          同icon组件type属性 
+ * @property {String}    text          按钮文本          默认为''
+ * @property {String}    icon          按钮图标          同icon组件type属性
  * @property {Boolean}   plain         是否是朴素按钮     默认为false
  * @property {Boolean}   round         是否是圆角按钮     默认为false
  * @property {Boolean}   block         是否是块级按钮     默认为false
@@ -48,7 +54,7 @@ interface ColorList {
  * @property {String}    hoverClass    点击时的类名       默认为''
  * @property {String}    hoverClass    点击时的类名       默认为''
  * @property {Object}    customStyle   自定义样式        默认为{}
- 
+
  *
  * @event {Function}	click   点击按钮触发 参数为事件参数
  */
@@ -159,7 +165,7 @@ const iconColor = computed(() => {
     if (!props.plain && props.type !== 'default') return '#fff'
     else if (!props.plain && props.type === 'default') return '#333'
     else {
-      const item = colorList.find((item) => item.type === props.type)
+      const item = colorList.find(item => item.type === props.type)
       return item && item.color
     }
   } else {
@@ -220,7 +226,7 @@ onMounted(() => {
     display: flex;
     align-items: center;
     justify-content: center;
-    div {
+    view {
       height: 100%;
     }
     .cc-button-text {

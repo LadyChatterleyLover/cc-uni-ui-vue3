@@ -131,7 +131,7 @@ onMounted(() => {
     align-items: center;
     justify-content: center;
     margin-right: 10px;
-    font-size: 14px;
+    font-size: 28rpx;
     padding: 6px 25px;
     position: relative;
     &-round {
@@ -148,7 +148,7 @@ onMounted(() => {
       color: #fff;
       border-radius: 100%;
       padding: 3px;
-      font-size: 12px;
+      font-size: 24rpx;
     }
     &-icon {
       width: 12px;

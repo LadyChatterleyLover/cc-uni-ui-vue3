@@ -179,6 +179,12 @@
       "style": {
         "navigationBarTitleText": "field"
       }
+    },
+    {
+      "path": "pages/search/index",
+      "style": {
+        "navigationBarTitleText": "search"
+      }
     }
   ],
   "globalStyle": {

@@ -1,22 +1,22 @@
 <template>
-  <div>
-    <div class="demo">
-      <div class="demo-title">基础用法</div>
-      <div class="demo-item">
+  <view>
+    <view class="demo">
+      <view class="demo-title">基础用法</view>
+      <view class="demo-item">
         <cc-count-down :time="time"></cc-count-down>
-      </div>
-    </div>
+      </view>
+    </view>
 
-    <div class="demo">
-      <div class="demo-title">分隔符为中文</div>
-      <div class="demo-item">
+    <view class="demo">
+      <view class="demo-title">分隔符为中文</view>
+      <view class="demo-item">
         <cc-count-down separator="zh" :time="time"></cc-count-down>
-      </div>
-    </div>
+      </view>
+    </view>
 
-    <div class="demo">
-      <div class="demo-title">自定义样式</div>
-      <div class="demo-item">
+    <view class="demo">
+      <view class="demo-title">自定义样式</view>
+      <view class="demo-item">
         <cc-count-down :time="time">
           <template #default="{ timeData }">
             <span class="block">{{ timeData.hours }}</span>
@@ -26,9 +26,9 @@
             <span class="block">{{ timeData.seconds }}</span>
           </template>
         </cc-count-down>
-      </div>
-    </div>
-  </div>
+      </view>
+    </view>
+  </view>
 </template>
 
 <script setup lang="ts">

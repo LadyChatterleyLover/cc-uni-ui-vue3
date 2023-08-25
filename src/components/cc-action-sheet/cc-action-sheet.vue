@@ -6,20 +6,20 @@
     :round="round"
     v-model="visible"
   >
-    <div class="cc-action-sheet">
-      <div v-if="title" class="cc-action-sheet-title">{{ title }}</div>
-      <div>
-        <div v-if="description" class="cc-action-sheet-description">
-          <div>{{ description }}</div>
-          <div class="cc-action-sheet-description-line"></div>
-        </div>
+    <view class="cc-action-sheet">
+      <view v-if="title" class="cc-action-sheet-title">{{ title }}</view>
+      <view>
+        <view v-if="description" class="cc-action-sheet-description">
+          <view>{{ description }}</view>
+          <view class="cc-action-sheet-description-line"></view>
+        </view>
         <slot></slot>
-        <div v-if="showCancel" class="cc-action-sheet-cancel" @click="cancel">
-          <div class="cc-action-sheet-cancel-line"></div>
-          <div class="cc-action-sheet-cancel-text">{{ cancelText }}</div>
-        </div>
-      </div>
-    </div>
+        <view v-if="showCancel" class="cc-action-sheet-cancel" @click="cancel">
+          <view class="cc-action-sheet-cancel-line"></view>
+          <view class="cc-action-sheet-cancel-text">{{ cancelText }}</view>
+        </view>
+      </view>
+    </view>
   </cc-popup>
 </template>
 
@@ -117,7 +117,7 @@ provide(actionSheetKey, {
     position: relative;
     padding: 40rpx 0 20rxp 0;
     color: #969799;
-    font-size: 14px;
+    font-size: 28rpx;
     line-height: 20rpx;
     text-align: center;
     &-line {
@@ -134,7 +134,7 @@ provide(actionSheetKey, {
     justify-content: center;
     flex-direction: column;
     padding: 14rpx 0 28rpx 0;
-    font-size: 16px;
+    font-size: 32rpx;
     background-color: #fff;
     border: none;
     &-line {

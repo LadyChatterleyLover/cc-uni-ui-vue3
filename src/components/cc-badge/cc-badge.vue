@@ -65,7 +65,7 @@ const showContent = computed(() => {
     padding: 0 8rpx;
     border-radius: 100%;
     z-index: 99;
-    font-size: 12px;
+    font-size: 24rpx;
     background: #ee0a24;
     color: #fff;
     transform: translate(50%, -50%);

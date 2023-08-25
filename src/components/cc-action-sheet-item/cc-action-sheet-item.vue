@@ -57,7 +57,7 @@ const handleClick = () => {
 .cc-action-sheet-item {
   width: 100%;
   padding: 28rpx 0;
-  font-size: 16px;
+  font-size: 32rpx;
   background-color: #fff;
   border: none;
   display: flex;
@@ -69,7 +69,7 @@ const handleClick = () => {
   &-subname {
     margin-top: 16rpx;
     color: #969799;
-    font-size: 12px;
+    font-size: 24rpx;
     line-height: 36rpx;
   }
   &-disabled {

@@ -69,7 +69,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue"
+import { ref } from 'vue'
 const sliderValue1 = ref<number>(20)
 const sliderValue2 = ref<number>(20)
 const sliderValue3 = ref<number>(20)
@@ -79,16 +79,16 @@ const sliderValue6 = ref<number>(20)
 const sliderValue7 = ref<number>(20)
 
 const touchstart = () => {
-  console.log("touchstart")
+  console.log('touchstart')
 }
 const touchend = () => {
-  console.log("touchend")
+  console.log('touchend')
 }
 const onInput = (val: string) => {
-  console.log("input", val)
+  console.log('input', val)
 }
 const onChange = (val: string) => {
-  console.log("change", val)
+  console.log('change', val)
 }
 </script>
 
@@ -106,7 +106,7 @@ const onChange = (val: string) => {
 .custom-button {
   width: 26px;
   color: #fff;
-  font-size: 10px;
+  font-size: 20rpx;
   line-height: 18px;
   text-align: center;
   background-color: #ee0a24;

@@ -2,7 +2,12 @@
   <view class="demo">
     <view class="demo-item" v-for="(item, index) in list" :key="index">
       <view class="demo-title">{{ item.title }}</view>
-      <view class="demo-content" v-for="(item1, index1) in item.item" :key="index1" @click="clickItem(item1)">
+      <view
+        class="demo-content"
+        v-for="(item1, index1) in item.item"
+        :key="index1"
+        @click="clickItem(item1)"
+      >
         <view class="demo-content-left">
           <view class="demo-content-left-label">{{ item1.label }}</view>
           <view class="demo-content-left-title">{{ item1.title }}</view>
@@ -459,7 +464,7 @@ let clickItem = (item: Item) => {
   background: #f7f8fa;
   padding: 60rpx 50rpx;
   &-title {
-    font-size: 14px;
+    font-size: 28rpx;
     color: #909ca4;
     margin-bottom: 40rpx;
   }

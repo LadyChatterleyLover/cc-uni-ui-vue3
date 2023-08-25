@@ -1,20 +1,20 @@
 <template>
-  <div v-if="!$slots.default" class="cc-divider-nocontent" :style="{ width: widthValue }"></div>
-  <div v-else class="cc-divider-content">
-    <div
-      class="cc-divider-content-left-line"
+  <view v-if="!$slots.default" class="cc-viewider-nocontent" :style="{ width: widthValue }"></view>
+  <view v-else class="cc-viewider-content">
+    <view
+      class="cc-viewider-content-left-line"
       :class="{ 'f-1': !width || position === 'left', 'f-8': position === 'right' }"
       :style="{ width: widthValue, background: color }"
-    ></div>
-    <div>
+    ></view>
+    <view>
       <slot></slot>
-    </div>
-    <div
-      class="cc-divider-content-right-line"
+    </view>
+    <view
+      class="cc-viewider-content-right-line"
       :class="{ 'f-1': !width || position === 'right', 'f-8': position === 'left' }"
       :style="{ width: widthValue, background: color }"
-    ></div>
-  </div>
+    ></view>
+  </view>
 </template>
 
 <script lang="ts" setup>
@@ -47,7 +47,7 @@ let widthValue = computed(() => {
 </script>
 
 <style lang="scss">
-.cc-divider {
+.cc-viewider {
   width: 100%;
   &-nocontent {
     height: 2rpx;

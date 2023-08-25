@@ -85,7 +85,7 @@
   background-color: #ee0a24;
   padding: 0 4rpx;
   color: #fff;
-  font-size: 12px;
+  font-size: 24rpx;
   line-height: 64rpx;
   border-radius: 2rpx;
 }

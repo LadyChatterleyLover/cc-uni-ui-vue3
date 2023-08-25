@@ -183,7 +183,7 @@ const handleSelect = (val: String) => {
   flex-wrap: wrap;
   align-items: center;
   margin: 20rpx 0;
-  div {
+  view {
     margin: 10rpx;
   }
 }

@@ -131,7 +131,7 @@ const close = () => {
 }
 watch(
   () => props.modelValue,
-  (val) => {
+  val => {
     if (val === false) loading.value = false
     if (val) {
       num.value++
@@ -156,7 +156,7 @@ defineExpose({
   left: 6%;
   right: 6%;
   overflow: hidden;
-  font-size: 16px;
+  font-size: 32rpx;
   background-color: #fff;
   border-radius: 32rpx;
   transform: translate3d(-50%, -50%, 0);
@@ -207,7 +207,7 @@ defineExpose({
       text-align: center;
       word-wrap: break-word;
       color: #646566;
-      font-size: 14px;
+      font-size: 28rpx;
       &-padding {
         padding: 34rpx;
       }

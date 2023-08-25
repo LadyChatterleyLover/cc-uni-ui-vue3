@@ -88,7 +88,6 @@ const props = withDefaults(
     rows?: string | number
   }>(),
   {
-    modelValue: '',
     label: '',
     placeholder: '',
     border: true,
@@ -173,14 +172,14 @@ watch(
   &-error-message {
     position: absolute;
     color: #ee0a24;
-    font-size: 12px;
+    font-size: 24rpx;
     bottom: -40rpx;
     left: 164rpx;
   }
   &-word-limit {
     position: absolute;
     color: #646566;
-    font-size: 12px;
+    font-size: 24rpx;
     bottom: -36rpx;
     right: 0;
   }
@@ -202,7 +201,7 @@ watch(
       left: -16rpx;
       top: -4rpx;
       color: #ee0a24;
-      font-size: 14px;
+      font-size: 28rpx;
     }
   }
   &-input {
