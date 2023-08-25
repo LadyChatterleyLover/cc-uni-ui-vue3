@@ -197,6 +197,12 @@
       "style": {
         "navigationBarTitleText": "avatar"
       }
+    },
+    {
+      "path": "pages/skeleton/index",
+      "style": {
+        "navigationBarTitleText": "skeleton"
+      }
     }
   ],
   "globalStyle": {
