@@ -185,6 +185,12 @@
       "style": {
         "navigationBarTitleText": "search"
       }
+    },
+    {
+      "path": "pages/numberKeyboard/index",
+      "style": {
+        "navigationBarTitleText": "numberKeyboard"
+      }
     }
   ],
   "globalStyle": {

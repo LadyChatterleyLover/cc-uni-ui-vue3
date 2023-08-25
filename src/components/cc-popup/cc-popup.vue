@@ -1,8 +1,15 @@
 <template>
-  <cc-overlay v-model="visible" :closeOnClickOverlay="closeOnClickOverlay" :flex="mode === '' ? true : false">
+  <cc-overlay
+    v-model="visible"
+    :closeOnClickOverlay="closeOnClickOverlay"
+    :flex="mode === '' ? true : false"
+  >
     <view
       class="cc-popup-content"
-      :class="['cc-popup-content-' + mode, { 'cc-popup-content-round': round && mode === 'bottom' }]"
+      :class="[
+        'cc-popup-content-' + mode,
+        { 'cc-popup-content-round': round && mode === 'bottom' },
+      ]"
       :style="{ height: height + 'rpx', width: width + 'rpx' }"
       :animation="animationData"
       @click.stop="() => {}"
@@ -32,6 +39,7 @@ const props = withDefaults(
     height?: string | number
     round?: boolean
     closeOnClickOverlay?: boolean
+    showMask?: boolean
   }>(),
   {
     modelValue: false,
@@ -43,6 +51,7 @@ const props = withDefaults(
     height: '',
     round: false,
     closeOnClickOverlay: true,
+    showMask: true,
   }
 )
 const emits = defineEmits(['update:modelValue', 'close', 'open'])
@@ -65,13 +74,13 @@ onMounted(() => {
 
 watch(
   () => props.modelValue,
-  (val) => {
+  val => {
     visible.value = val
   }
 )
 watch(
   () => visible.value,
-  (val) => {
+  val => {
     if (val) {
       emits('open')
       if (props.mode === 'left') {
@@ -119,6 +128,10 @@ watch(
     emits('update:modelValue', val)
   }
 )
+
+defineExpose({
+  close,
+})
 </script>
 
 <style scoped lang="scss">

@@ -30,6 +30,7 @@ const props = withDefaults(
     background: 'rgba(0,0,0,.5)',
     flex: true,
     closeOnClickOverlay: true,
+    showMask: true,
   }
 )
 
@@ -58,7 +59,7 @@ let cleanup = () => {}
 
 const stopWatch = watch(
   () => props.modelValue,
-  (val) => {
+  val => {
     let timer1: number | null = null
     let timer2: number | null = null
     if (val) {
