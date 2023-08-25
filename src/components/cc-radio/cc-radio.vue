@@ -13,7 +13,11 @@
         width: computedIconSize + 'rpx',
         height: computedIconSize + 'rpx',
         background: computedDisabled ? '#ebedf0' : checked ? computedCheckedColor : '#fff',
-        border: computedDisabled ? '#c8c9cc' : checked ? `1px solid ${computedCheckedColor}` : '1px solid #c8c9cc',
+        border: computedDisabled
+          ? '#c8c9cc'
+          : checked
+          ? `1px solid ${computedCheckedColor}`
+          : '1px solid #c8c9cc',
       }"
       @click.stop="clickIcon"
     >
@@ -36,77 +40,70 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, watch, computed, getCurrentInstance } from "vue"
-
-const instance = getCurrentInstance()
-let parent: any = null
-/* #ifdef H5 */
-parent = instance.parent.parent
-/* #endif */
-/* #ifndef H5 */
-parent = instance.parent
-/* #endif */
+import { ref, watch, computed, inject } from 'vue'
+import { radioGroupKey } from '../cc-radio-group/constants'
+import { RadioGroupValue } from '../cc-radio-group/cc-radio-group.vue'
 
 const props = withDefaults(
   defineProps<{
     modelValue?: boolean
-    shape?: "round" | "square"
-    name: any
+    shape?: 'round' | 'square'
+    name: RadioGroupValue
     disabled?: boolean
     labelDisabled?: boolean
-    labelPosition?: "left" | "right"
+    labelPosition?: 'left' | 'right'
     iconSize?: number | string
     checkedColor?: string
   }>(),
   {
     modelValue: false,
-    shape: "round",
+    shape: 'round',
     disabled: false,
     labelDisabled: false,
-    labelPosition: "left",
+    labelPosition: 'left',
     iconSize: 40,
-    checkedColor: "#1989fa",
+    checkedColor: '#1989fa',
   }
 )
-const emits = defineEmits(["update:modelValue"])
 
-const groupProps = parent.props
-
+const radioGroup = inject(radioGroupKey, undefined)
 const checked = ref(false)
 
 const change = () => {
-  if (props.labelDisabled || props.disabled) {
+  if (radioGroup.disabled || props.labelDisabled || props.disabled) {
     return
   }
-  parent.exposed.setChecked(props.name)
+  radioGroup.modelValue = props.name
+  radioGroup.change(props.name)
 }
 
 const clickIcon = () => {
-  if (props.disabled) {
+  if (radioGroup.disabled || props.disabled) {
     return
   }
-  parent.exposed.setChecked(props.name)
+  radioGroup.modelValue = props.name
+  radioGroup.change(props.name)
 }
 
 const computedIconSize = computed(() => {
-  if (groupProps && groupProps.iconSize && !props.iconSize) {
-    return groupProps.iconSize
+  if (radioGroup && radioGroup.iconSize && !props.iconSize) {
+    return radioGroup.iconSize
   } else {
     return props.iconSize
   }
 })
 
 const computedDisabled = computed(() => {
-  if (groupProps && groupProps.disabled && !props.disabled) {
-    return groupProps.disabled
+  if (radioGroup && radioGroup.disabled && !props.disabled) {
+    return radioGroup.disabled
   } else {
     return props.disabled
   }
 })
 
 const computedCheckedColor = computed(() => {
-  if (groupProps && groupProps.checkedColor && !props.checkedColor) {
-    return groupProps.checkedColor
+  if (radioGroup && radioGroup.checkedColor && !props.checkedColor) {
+    return radioGroup.checkedColor
   } else {
     return props.checkedColor
   }
@@ -114,27 +111,17 @@ const computedCheckedColor = computed(() => {
 
 watch(
   () => props.modelValue,
-  (val) => {
+  val => {
     checked.value = val
   },
   { immediate: true }
 )
 
 watch(
-  () => props.name,
-  (val) => {
+  () => radioGroup,
+  val => {
     if (val) {
-      parent.exposed.addChildName(val)
-    }
-  },
-  { immediate: true }
-)
-
-watch(
-  () => groupProps,
-  (val) => {
-    if (val) {
-      let value = val.modelValue
+      const value = val.modelValue
       checked.value = props.name === value
     }
   },

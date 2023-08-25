@@ -10,36 +10,49 @@
 </template>
 
 <script lang="ts" setup>
-import { provide, reactive, watch, ref } from "vue"
+import { provide, reactive, watch, ref, computed } from 'vue'
+import { radioGroupKey } from './constants'
+
+export type RadioGroupValue = string | number | boolean
 
 const props = withDefaults(
   defineProps<{
-    modelValue: any
+    modelValue: RadioGroupValue
     disabled?: boolean
     max?: number | string
-    direction?: "vertical" | "horizontal"
+    direction?: 'vertical' | 'horizontal'
     iconSize?: number | string
     checkedColor?: string
   }>(),
   {
     disabled: false,
     max: 0,
-    direction: "vertical",
+    direction: 'vertical',
     iconSize: 40,
-    checkedColor: "#1989fa",
+    checkedColor: '#1989fa',
   }
 )
 
-const emits = defineEmits(["update:modelValue", "change"])
+const emits = defineEmits<{
+  'update:modelValue': [val: RadioGroupValue]
+  change: [val: RadioGroupValue]
+}>()
 
-const checked = ref([])
-const childNameList = ref([])
+const checked = ref<RadioGroupValue>()
 
-provide("checkboxGroupProps", reactive(props))
+const change = (val: RadioGroupValue) => {
+  checked.value = val
+}
+
+provide(radioGroupKey, {
+  ...reactive(props),
+  change,
+  checked: computed(() => checked.value),
+})
 
 watch(
   () => props.modelValue,
-  (val) => {
+  val => {
     checked.value = val
   },
   { immediate: true }
@@ -47,27 +60,11 @@ watch(
 
 watch(
   () => checked.value,
-  (val) => {
-    emits("update:modelValue", val)
-    emits("change", val)
+  val => {
+    emits('update:modelValue', val)
+    emits('change', val)
   }
 )
-
-// 添加子组件实例
-const addChildName = (name: any) => {
-  childNameList.value.push(name)
-}
-
-const setChecked = (name: any) => {
-  checked.value = name
-}
-
-
-defineExpose({
-  setChecked,
-  addChildName,
-  modelValue: props.modelValue,
-})
 </script>
 
 <style lang="scss" scoped>

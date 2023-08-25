@@ -99,14 +99,14 @@ const setChecked = () => {
 }
 
 const change = () => {
-  if (props.labelDisabled || props.disabled) {
+  if (checkBoxGroup.disabled || props.labelDisabled || props.disabled) {
     return
   }
   setChecked()
 }
 
 const clickIcon = () => {
-  if (props.disabled) {
+  if (checkBoxGroup.disabled || props.disabled) {
     return
   }
   setChecked()

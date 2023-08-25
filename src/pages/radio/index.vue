@@ -83,18 +83,18 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from "vue"
+import { ref } from 'vue'
 
-const checked1 = ref("a")
-const checked2 = ref("a")
-const checked3 = ref("a")
-const checked4 = ref("a")
-const checked5 = ref("a")
-const checked6 = ref("a")
-const checked7 = ref("a")
+const checked1 = ref('a')
+const checked2 = ref('a')
+const checked3 = ref('a')
+const checked4 = ref('a')
+const checked5 = ref('a')
+const checked6 = ref('a')
+const checked7 = ref('a')
 
-const activeIcon = "https://fastly.jsdelivr.net/npm/@vant/assets/user-active.png"
-const inactiveIcon = "https://fastly.jsdelivr.net/npm/@vant/assets/user-inactive.png"
+const activeIcon = 'https://fastly.jsdelivr.net/npm/@vant/assets/user-active.png'
+const inactiveIcon = 'https://fastly.jsdelivr.net/npm/@vant/assets/user-inactive.png'
 
 const handleChange = (val: any) => {
   console.log(val)
