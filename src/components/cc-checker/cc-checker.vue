@@ -22,12 +22,19 @@
         :class="{ 'cc-checker-item-round': item.round, 'cc-checker-item-disabled': item.disabled }"
         v-for="(item, index) in checkList"
         :key="index"
-        :style="{ background: item.checked ? item.bgColor : '#f5f5f5', color: item.checked ? item.color : '#333' }"
+        :style="{
+          background: item.checked ? item.bgColor : '#f5f5f5',
+          color: item.checked ? item.color : '#333',
+        }"
         @click="clickItem(item, index)"
       >
         <view>{{ item.label }}</view>
         <view class="cc-item-info" v-if="item.info">{{ item.info }}</view>
-        <i class="cc-checker-item-icon" v-if="item.checked" :style="{ fill: item.checked ? item.color : '#f5f5f5' }">
+        <i
+          class="cc-checker-item-icon"
+          v-if="item.checked"
+          :style="{ fill: item.checked ? item.color : '#f5f5f5' }"
+        >
           <svg width="100%" height="100%" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
             <g fill-rule="evenodd">
               <path d="M16 0v12a4 4 0 01-4 4H0L16 0z" />
@@ -45,8 +52,8 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, defineEmits, PropType, ref, onMounted } from "vue"
-import cloneDeep from "lodash/cloneDeep"
+import { ref, onMounted } from 'vue'
+import { cloneDeep } from 'lodash-es'
 export interface CheckerItem {
   label: string
   value: string | number | boolean
@@ -68,15 +75,15 @@ const props = withDefaults(
     multiple: false,
   }
 )
-const emits = defineEmits(["change"])
+const emits = defineEmits(['change'])
 const current = ref<CheckerItem>()
 const currentIndex = ref<number>(0)
 const checkList = ref<CheckerItem[]>(cloneDeep(props.list))
 const multipleList = ref<any[]>([])
 const init = () => {
   checkList.value.map((item: CheckerItem) => {
-    if (!item.color) item.color = "#0081ff"
-    if (!item.bgColor) item.bgColor = "#EBF4FF"
+    if (!item.color) item.color = '#0081ff'
+    if (!item.bgColor) item.bgColor = '#EBF4FF'
   })
   if (Array.isArray(props.modelValue)) {
     checkList.value.map((item: CheckerItem) => {
@@ -87,8 +94,8 @@ const init = () => {
       }
     })
   } else {
-    current.value = props.list.find((item) => item.value === props.modelValue)
-    currentIndex.value = props.list.findIndex((item) => item.value === props.modelValue)
+    current.value = props.list.find(item => item.value === props.modelValue)
+    currentIndex.value = props.list.findIndex(item => item.value === props.modelValue)
   }
 }
 const clickItem = (item: CheckerItem, index: number) => {
@@ -96,18 +103,18 @@ const clickItem = (item: CheckerItem, index: number) => {
   if (!props.multiple) {
     currentIndex.value = index
     current.value = item
-    emits("change", item.value)
+    emits('change', item.value)
   } else {
     item.checked = !item.checked
     const checked = checkList.value
-      .filter((item) => item.checked)
-      .map((item) => {
+      .filter(item => item.checked)
+      .map(item => {
         return {
           label: item.label,
           value: item.value,
         }
       })
-    emits("change", checked)
+    emits('change', checked)
   }
 }
 onMounted(() => {

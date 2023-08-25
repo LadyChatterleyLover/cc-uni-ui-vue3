@@ -45,6 +45,7 @@
     "@dcloudio/uni-mp-weixin": "3.0.0-alpha-3040820220424001",
     "@dcloudio/uni-quickapp-webview": "3.0.0-alpha-3040820220424001",
     "countup.js": "^2.7.1",
+    "lodash-es": "^4.17.21",
     "vue": "^3.3.4",
     "vue-i18n": "^9.2.2",
     "vuex": "^4.1.0"
@@ -56,6 +57,7 @@
     "@dcloudio/uni-automator": "3.0.0-alpha-3040820220424001",
     "@dcloudio/uni-cli-shared": "3.0.0-alpha-3040820220424001",
     "@dcloudio/vite-plugin-uni": "3.0.0-alpha-3040820220424001",
+    "@types/lodash-es": "^4.17.8",
     "cz-customizable": "^6.9.2",
     "sass": "^1.66.1",
     "sass-loader": "^12.6.0",
