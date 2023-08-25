@@ -3,7 +3,7 @@
     <view>
       <view class="title">基础用法</view>
       <view class="item">
-        <cc-action-sheet v-model="show1">
+        <cc-action-sheet v-model="show1" @select="handleSelect">
           <cc-action-sheet-item name="选项一"></cc-action-sheet-item>
           <cc-action-sheet-item name="选项二"></cc-action-sheet-item>
           <cc-action-sheet-item name="选项三"></cc-action-sheet-item>
@@ -81,7 +81,12 @@
     <view>
       <view class="title">取消文字</view>
       <view class="item">
-        <cc-action-sheet cancelText="关闭" v-model="show7" showCancel description="这是一段描述信息">
+        <cc-action-sheet
+          cancelText="关闭"
+          v-model="show7"
+          showCancel
+          description="这是一段描述信息"
+        >
           <cc-action-sheet-item name="选项一"></cc-action-sheet-item>
           <cc-action-sheet-item name="选项二"></cc-action-sheet-item>
           <cc-action-sheet-item name="选项三"></cc-action-sheet-item>
@@ -93,7 +98,12 @@
     <view>
       <view class="title">禁用和自定义样式</view>
       <view class="item">
-        <cc-action-sheet cancelText="关闭" v-model="show8" showCancel description="这是一段描述信息">
+        <cc-action-sheet
+          cancelText="关闭"
+          v-model="show8"
+          showCancel
+          description="这是一段描述信息"
+        >
           <cc-action-sheet-item name="选项一" color="#ee0a24"></cc-action-sheet-item>
           <cc-action-sheet-item name="选项二" disabled></cc-action-sheet-item>
           <cc-action-sheet-item name="选项三" fontSize="50"></cc-action-sheet-item>
@@ -159,11 +169,8 @@ const open8 = () => {
 const open9 = () => {
   show9.value = true
 }
-const open10 = () => {
-  show10.value = true
-}
-const open11 = () => {
-  show11.value = true
+const handleSelect = (val: String) => {
+  console.log(val)
 }
 </script>
 

@@ -1,6 +1,5 @@
 <template>
   <cc-popup
-    ref="popup"
     mode="bottom"
     :closeOnClickOverlay="closeOnClickOverlay"
     :closeable="closeable"
@@ -26,6 +25,7 @@
 
 <script lang="ts" setup>
 import { provide, ref, watch } from 'vue'
+import { actionSheetKey } from './constants'
 
 const props = withDefaults(
   defineProps<{
@@ -60,20 +60,28 @@ const props = withDefaults(
   }
 )
 
-const emits = defineEmits(['update:modelValue', 'cancel'])
+const emits = defineEmits<{
+  'update:modelValue': [val: boolean]
+  cancel: []
+  select: [val: String]
+}>()
 
 const visible = ref(false)
 
+const selectEvent = (val: String) => {
+  emits('select', val)
+}
+
 watch(
   () => props.modelValue,
-  (val) => {
+  val => {
     visible.value = val
   }
 )
 
 watch(
   () => visible.value,
-  (val) => {
+  val => {
     emits('update:modelValue', val)
   }
 )
@@ -90,7 +98,10 @@ const cancel = () => {
   emits('cancel')
 }
 
-provide('close', close)
+provide(actionSheetKey, {
+  select: selectEvent,
+  close,
+})
 </script>
 
 <style lang="scss" scoped>

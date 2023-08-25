@@ -15,12 +15,12 @@
 
 <script lang="ts" setup>
 import { inject } from 'vue'
+import { actionSheetKey } from '../cc-action-sheet/constants'
 
-const close = inject<() => void>('close')
+const actionSheet = inject(actionSheetKey, undefined)
 
 const props = withDefaults(
   defineProps<{
-    // 标题
     name: string
     // 二级标题
     subname?: string
@@ -45,14 +45,10 @@ const props = withDefaults(
   }
 )
 
-const emits = defineEmits(['click'])
-
 const handleClick = () => {
-  emits('click', {
-    ...props,
-  })
+  actionSheet.select(props.name)
   if (props.closeOnClickAction) {
-    close!()
+    actionSheet.close()
   }
 }
 </script>
