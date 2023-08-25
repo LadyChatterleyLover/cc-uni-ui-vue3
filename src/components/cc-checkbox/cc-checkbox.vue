@@ -13,7 +13,11 @@
         width: computedIconSize + 'rpx',
         height: computedIconSize + 'rpx',
         background: computedDisabled ? '#ebedf0' : checked ? computedCheckedColor : '#fff',
-        border: computedDisabled ? '#c8c9cc' : checked ? `1px solid ${computedCheckedColor}` : '1px solid #c8c9cc',
+        border: computedDisabled
+          ? '#c8c9cc'
+          : checked
+          ? `1px solid ${computedCheckedColor}`
+          : '1px solid #c8c9cc',
       }"
       @click.stop="clickIcon"
     >
@@ -36,22 +40,18 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, watch, computed, getCurrentInstance } from 'vue'
+import { ref, watch, computed, inject } from 'vue'
+import { checkboxGroupKey } from '../cc-checkbox-group/constants'
+import { CheckboxGroupValue } from '../cc-checkbox-group/cc-checkbox-group.vue'
+import { cloneDeep } from 'lodash-es'
 
-const instance = getCurrentInstance()
-let parent: any = null
-/* #ifdef H5 */
-parent = instance.parent.parent
-/* #endif */
-/* #ifndef H5 */
-parent = instance.parent
-/* #endif */
+type CheckboxValue = string | number | boolean
 
 const props = withDefaults(
   defineProps<{
     modelValue?: boolean
     shape?: 'round' | 'square'
-    name?: any
+    name?: CheckboxValue
     disabled?: boolean
     labelDisabled?: boolean
     labelPosition?: 'left' | 'right'
@@ -61,7 +61,6 @@ const props = withDefaults(
   {
     modelValue: false,
     shape: 'round',
-    name: '',
     disabled: false,
     labelDisabled: false,
     labelPosition: 'left',
@@ -69,75 +68,69 @@ const props = withDefaults(
     checkedColor: '#1989fa',
   }
 )
-const emits = defineEmits(['update:modelValue', 'change'])
+const emits = defineEmits<{
+  'update:modelValue': [val: CheckboxValue]
+  change: [val: CheckboxValue]
+}>()
 
-const groupProps = parent.props
+const checkBoxGroup = inject(checkboxGroupKey, undefined)
 
 const checked = ref(false)
+const checkedList = ref(checkBoxGroup && cloneDeep(checkBoxGroup.modelValue))
+
+const setChecked = () => {
+  checked.value = !checked.value
+  if (props.name) {
+    if (!checked.value) {
+      checkBoxGroup.modelValue = (checkBoxGroup.modelValue as []).filter(
+        item => item !== props.name
+      )
+      checkBoxGroup.change(checkBoxGroup.modelValue)
+    } else {
+      if (Number(checkBoxGroup.max) > 0 && checkedList.value.length >= Number(checkBoxGroup.max)) {
+        checked.value = !checked.value
+        return
+      }
+      ;(checkBoxGroup.modelValue as any).push(props.name)
+      checkBoxGroup.change(checkBoxGroup.modelValue)
+    }
+  }
+  emits('change', checked.value)
+}
 
 const change = () => {
   if (props.labelDisabled || props.disabled) {
     return
   }
-  let checkedList = parent.props.modelValue
-  checked.value = !checked.value
-  if (props.name) {
-    if (!checked.value) {
-      checkedList = checkedList.filter((item) => item !== props.name)
-      parent.exposed.setChecked([...checkedList])
-    } else {
-      if (parent.props.max > 0 && checkedList.length >= Number(parent.props.max)) {
-        checked.value = !checked.value
-        return
-      }
-      checkedList.push(props.name)
-      parent.exposed.setChecked([...checkedList])
-    }
-  }
-  emits('change', checked.value)
+  setChecked()
 }
 
 const clickIcon = () => {
   if (props.disabled) {
     return
   }
-  let checkedList = parent.props.modelValue
-  checked.value = !checked.value
-  if (props.name) {
-    if (!checked.value) {
-      checkedList = checkedList.filter((item) => item !== props.name)
-      parent.exposed.setChecked([...checkedList])
-    } else {
-      if (parent.props.max > 0 && checkedList.length >= Number(parent.props.max)) {
-        checked.value = !checked.value
-        return
-      }
-      checkedList.push(props.name)
-      parent.exposed.setChecked([...checkedList])
-    }
-  }
-  emits('change', checked.value)
+  setChecked()
 }
 
 const computedIconSize = computed(() => {
-  if (groupProps && groupProps.iconSize && !props.iconSize) {
-    return groupProps.iconSize
+  if (checkBoxGroup && checkBoxGroup.iconSize && !props.iconSize) {
+    return checkBoxGroup.iconSize
   } else {
     return props.iconSize
   }
 })
 
 const computedDisabled = computed(() => {
-  if (groupProps && groupProps.disabled && !props.disabled) {
-    return groupProps.disabled
+  if (checkBoxGroup && checkBoxGroup.disabled && !props.disabled) {
+    return checkBoxGroup.disabled
   } else {
     return props.disabled
   }
 })
 
 const computedCheckedColor = computed(() => {
-  if (groupProps && groupProps.checkedColor && !props.checkedColor) {
-    return groupProps.checkedColor
+  if (checkBoxGroup && checkBoxGroup.checkedColor && !props.checkedColor) {
+    return checkBoxGroup.checkedColor
   } else {
     return props.checkedColor
   }
@@ -145,7 +138,7 @@ const computedCheckedColor = computed(() => {
 
 watch(
   () => props.modelValue,
-  (val) => {
+  val => {
     checked.value = val
   },
   { immediate: true }
@@ -153,28 +146,18 @@ watch(
 
 watch(
   () => checked.value,
-  (val) => {
+  val => {
     emits('update:modelValue', val)
   }
 )
 
 watch(
-  () => props.name,
-  (val) => {
+  () => checkBoxGroup,
+  val => {
     if (val) {
-      parent.exposed.addChildName(val)
-    }
-  },
-  { immediate: true }
-)
-
-watch(
-  () => groupProps,
-  (val) => {
-    if (val) {
-      let value = val.modelValue
+      const value = checkBoxGroup.modelValue
       if (props.name) {
-        checked.value = value.find((item) => item === props.name)
+        checked.value = (value as []).findIndex(item => item === props.name) > -1
       }
     }
   },

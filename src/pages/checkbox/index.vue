@@ -67,7 +67,7 @@
     <view style="margin-bottom: 40rpx">
       <view class="title">复选框组</view>
       <view class="item">
-        <cc-checkbox-group v-model="checked9">
+        <cc-checkbox-group v-model="checked9" @change="handleChange">
           <cc-checkbox name="a">复选框 a</cc-checkbox>
           <cc-checkbox name="b">复选框 b</cc-checkbox>
         </cc-checkbox-group>
@@ -100,11 +100,9 @@ const checked8 = ref(false)
 const checked9 = ref(['a', 'b'])
 const checked10 = ref(['a', 'b'])
 
-
 const handleChange = (val: any) => {
   console.log(val)
 }
-
 </script>
 
 <style lang="scss" scoped>
