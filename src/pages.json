@@ -191,6 +191,12 @@
       "style": {
         "navigationBarTitleText": "numberKeyboard"
       }
+    },
+    {
+      "path": "pages/avatar/index",
+      "style": {
+        "navigationBarTitleText": "avatar"
+      }
     }
   ],
   "globalStyle": {
