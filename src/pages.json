@@ -209,6 +209,12 @@
       "style": {
         "navigationBarTitleText": "collapse"
       }
+    },
+    {
+      "path": "pages/steps/index",
+      "style": {
+        "navigationBarTitleText": "steps"
+      }
     }
   ],
   "globalStyle": {
