@@ -1,10 +1,12 @@
 <template>
   <!-- #ifdef APP-NVUE -->
-  <text :style="{ color: color, 'font-size': Number(iconSize) / 2 + 'rpx' }" class="uni-icons" @click="handleClick">{{ ccCode }}</text>
+  <text :style="{ color: color, 'font-size': iconSize }" class="uni-icons" @click="handleClick">{{
+    ccCode
+  }}</text>
   <!-- #endif -->
   <!-- #ifndef APP-NVUE -->
   <text
-    :style="{ color: color, 'font-size': Number(iconSize) / 2 + 'rpx' }"
+    :style="{ color: color, fontSize: iconSize }"
     class="uni-icons"
     :class="['uniui-' + type, customPrefix, customPrefix ? type : '']"
     @click="handleClick"
@@ -15,11 +17,6 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import iconList from './icons'
-
-const getVal = (val: number | string) => {
-  const reg = /^[0-9]*$/g
-  return typeof val === 'number' || reg.test(val) ? val + 'px' : val
-}
 
 const props = withDefaults(
   defineProps<{
@@ -40,8 +37,13 @@ const icons = ref(iconList.glyphs)
 
 const emits = defineEmits(['click'])
 
+const getVal = (val: number | string) => {
+  const reg = /^[0-9]*$/g
+  return typeof val === 'number' || reg.test(val) ? val + 'px' : val + 'px'
+}
+
 const ccCode = computed(() => {
-  const code = icons.value.find((v) => v.font_class === props.type)
+  const code = icons.value.find(v => v.font_class === props.type)
   if (code) {
     return unescape(`%u${code.unicode}`)
   }

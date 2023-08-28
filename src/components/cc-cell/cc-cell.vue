@@ -1,5 +1,9 @@
 <template>
-  <view class="cc-cell" :class="[{ 'cc-cell-large': size }, { 'cc-cell-border': border }]" @click="onClick">
+  <view
+    class="cc-cell"
+    :class="[{ 'cc-cell-large': size }, { 'cc-cell-border': border }]"
+    @click="onClick"
+  >
     <view>
       <view class="cc-cell-title">
         <view v-if="icon" class="cc-cell-left-icon">
@@ -22,7 +26,12 @@
         <slot name="value" v-if="!value"></slot>
       </view>
       <view class="cc-cell-right-icon">
-        <cc-icon color="#969799" v-if="isLink" :type="`arrow${arrowDirection}`" :size="iconSize"></cc-icon>
+        <cc-icon
+          color="#969799"
+          v-if="isLink"
+          :type="`arrow${arrowDirection}`"
+          :size="iconSize"
+        ></cc-icon>
         <slot name="right-icon"></slot>
       </view>
     </view>
@@ -51,6 +60,7 @@ const props = withDefaults(
     isLink?: boolean
     // 箭头方向
     arrowDirection?: CellArrowDirectionProps
+    // 图标大小
     iconSize?: number | string
   }>(),
   {

@@ -203,6 +203,12 @@
       "style": {
         "navigationBarTitleText": "skeleton"
       }
+    },
+    {
+      "path": "pages/collapse/index",
+      "style": {
+        "navigationBarTitleText": "collapse"
+      }
     }
   ],
   "globalStyle": {
