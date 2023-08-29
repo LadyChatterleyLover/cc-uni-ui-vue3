@@ -272,6 +272,12 @@
       "style": {
         "navigationBarTitleText": "upload"
       }
+    },
+    {
+      "path": "pages/treeSelect/index",
+      "style": {
+        "navigationBarTitleText": "treeSelect"
+      }
     }
   ],
   "globalStyle": {

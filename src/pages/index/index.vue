@@ -194,11 +194,6 @@ const list: ListItem[] = [
         label: '头像',
         url: '/pages/avatar/index',
       },
-      {
-        title: 'Qrcode',
-        label: '生成二维码',
-        url: '/pages/qrcode/index',
-      },
     ],
   },
   {
@@ -208,11 +203,6 @@ const list: ListItem[] = [
         title: 'Badge',
         label: '徽标',
         url: '/pages/badge/index',
-      },
-      {
-        title: 'CircleProgress',
-        label: '圆形进度条',
-        url: '/pages/circleProgress/index',
       },
       {
         title: 'Collapse',
@@ -243,11 +233,6 @@ const list: ListItem[] = [
         title: 'Steps',
         label: '步骤条',
         url: '/pages/steps/index',
-      },
-      {
-        title: 'ImagePreview',
-        label: '图片预览',
-        url: '/pages/imagePreview/index',
       },
       {
         title: 'NotifyBar',
