@@ -266,6 +266,12 @@
       "style": {
         "navigationBarTitleText": "rotateVerify"
       }
+    },
+    {
+      "path": "pages/upload/index",
+      "style": {
+        "navigationBarTitleText": "upload"
+      }
     }
   ],
   "globalStyle": {
