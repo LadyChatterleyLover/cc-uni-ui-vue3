@@ -278,6 +278,12 @@
       "style": {
         "navigationBarTitleText": "treeSelect"
       }
+    },
+    {
+      "path": "pages/swipeCell/index",
+      "style": {
+        "navigationBarTitleText": "swipeCell"
+      }
     }
   ],
   "globalStyle": {
