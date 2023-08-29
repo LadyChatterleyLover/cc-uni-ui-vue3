@@ -246,10 +246,13 @@
     {
       "path": "pages/swiper/index",
       "style": {
-        "navigationBarTitleText": "swiper",
-        "h5": {
-          "titleNView": false
-        }
+        "navigationBarTitleText": "swiper"
+      }
+    },
+    {
+      "path": "pages/notify/index",
+      "style": {
+        "navigationBarTitleText": "notify"
       }
     }
   ],
