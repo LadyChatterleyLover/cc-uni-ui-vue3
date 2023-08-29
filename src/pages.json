@@ -260,6 +260,12 @@
       "style": {
         "navigationBarTitleText": "slideVerify"
       }
+    },
+    {
+      "path": "pages/rotateVerify/index",
+      "style": {
+        "navigationBarTitleText": "rotateVerify"
+      }
     }
   ],
   "globalStyle": {
