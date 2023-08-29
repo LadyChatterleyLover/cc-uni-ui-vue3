@@ -42,7 +42,6 @@
 <script lang="ts" setup>
 import { ref, watch, computed, inject } from 'vue'
 import { checkboxGroupKey } from '../cc-checkbox-group/constants'
-import { CheckboxGroupValue } from '../cc-checkbox-group/cc-checkbox-group.vue'
 import { cloneDeep } from 'lodash-es'
 
 type CheckboxValue = string | number | boolean
@@ -99,14 +98,14 @@ const setChecked = () => {
 }
 
 const change = () => {
-  if (checkBoxGroup.disabled || props.labelDisabled || props.disabled) {
+  if ((checkBoxGroup && checkBoxGroup.disabled) || props.labelDisabled || props.disabled) {
     return
   }
   setChecked()
 }
 
 const clickIcon = () => {
-  if (checkBoxGroup.disabled || props.disabled) {
+  if ((checkBoxGroup && checkBoxGroup.disabled) || props.disabled) {
     return
   }
   setChecked()
