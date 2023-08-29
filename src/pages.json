@@ -233,6 +233,15 @@
       "style": {
         "navigationBarTitleText": "alert"
       }
+    },
+    {
+      "path": "pages/navBar/index",
+      "style": {
+        "navigationBarTitleText": "navBar",
+        "h5": {
+          "titleNView": false
+        }
+      }
     }
   ],
   "globalStyle": {

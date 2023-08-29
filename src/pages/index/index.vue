@@ -330,11 +330,6 @@ const list: ListItem[] = [
         url: '/pages/navBar/index',
       },
       {
-        title: 'BackTop',
-        label: '回到顶部',
-        url: '/pages/backTop/index',
-      },
-      {
         title: 'Pagination',
         label: '分页',
         url: '/pages/pagination/index',
@@ -348,11 +343,6 @@ const list: ListItem[] = [
         title: 'Tabs',
         label: '标签页',
         url: '/pages/tabs/index',
-      },
-      {
-        title: 'FullTabs',
-        label: '全屏选项卡',
-        url: '/pages/fullTabs/index',
       },
       {
         title: 'Tabbar',

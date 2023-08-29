@@ -119,7 +119,7 @@ const handleConfirm = (e: Event) => {
 
 <style lang="scss" scoped>
 .title {
-  margin: #{topx(10)};
+  margin: 20rpx;
 }
 .label {
   display: flex;

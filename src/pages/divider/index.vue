@@ -47,7 +47,7 @@
       <view class="title">自定义样式</view>
       <view class="item">
         <cc-divider color="#fa3534">
-          <div style="color: #1989fa">带笑归去</div>
+          <view style="color: #1989fa">带笑归去</view>
         </cc-divider>
       </view>
     </view>
@@ -66,5 +66,4 @@
   align-items: center;
   margin: 20rpx;
 }
-
 </style>

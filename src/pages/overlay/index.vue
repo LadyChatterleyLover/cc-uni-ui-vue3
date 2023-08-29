@@ -39,7 +39,7 @@ const handleClick = () => {
 
 <style scoped lang="scss">
 .title {
-  margin: #{topx(10)};
+  margin: 20rpx;
 }
 .item {
   display: flex;
