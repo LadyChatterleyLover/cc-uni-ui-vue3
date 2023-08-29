@@ -4,7 +4,7 @@ export interface StepsContext {
   active: ComputedRef<number>
   vertical: boolean
   dot: boolean
-  children: ComputedRef<ComponentInternalInstance[]>
+  children: ComputedRef
   change: (val: number) => void
   addChild: (val: ComponentInternalInstance) => void
 }

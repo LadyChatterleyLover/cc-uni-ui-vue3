@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <div class="title">基础用法</div>
-    <div class="title">
+  <view>
+    <view class="title">基础用法</view>
+    <view class="title">
       <cc-collapse v-model="value1" @change="handleChange">
         <cc-collapse-item
           name="1"
@@ -19,10 +19,10 @@
           content="刮风这天，我试过握着你手，但偏偏，雨渐渐，大到我看你不见，还要多久，我才能在你身边，等到放晴的那天，也许我会比较好一点"
         ></cc-collapse-item>
       </cc-collapse>
-    </div>
+    </view>
 
-    <div class="title">右侧箭头显示和样式</div>
-    <div class="title">
+    <view class="title">右侧箭头显示和样式</view>
+    <view class="title">
       <cc-collapse v-model="value2">
         <cc-collapse-item
           name="1"
@@ -43,10 +43,10 @@
           content="刮风这天，我试过握着你手，但偏偏，雨渐渐，大到我看你不见，还要多久，我才能在你身边，等到放晴的那天，也许我会比较好一点"
         ></cc-collapse-item>
       </cc-collapse>
-    </div>
+    </view>
 
-    <div class="title">手风琴模式</div>
-    <div class="title">
+    <view class="title">手风琴模式</view>
+    <view class="title">
       <cc-collapse v-model="value3" accordion>
         <cc-collapse-item
           name="1"
@@ -64,10 +64,10 @@
           content="刮风这天，我试过握着你手，但偏偏，雨渐渐，大到我看你不见，还要多久，我才能在你身边，等到放晴的那天，也许我会比较好一点"
         ></cc-collapse-item>
       </cc-collapse>
-    </div>
+    </view>
 
-    <div class="title">禁用和无边框</div>
-    <div class="title">
+    <view class="title">禁用和无边框</view>
+    <view class="title">
       <cc-collapse v-model="value3" accordion>
         <cc-collapse-item
           name="1"
@@ -87,10 +87,10 @@
           content="刮风这天，我试过握着你手，但偏偏，雨渐渐，大到我看你不见，还要多久，我才能在你身边，等到放晴的那天，也许我会比较好一点"
         ></cc-collapse-item>
       </cc-collapse>
-    </div>
+    </view>
 
-    <div class="title">自定义内容</div>
-    <div class="title">
+    <view class="title">自定义内容</view>
+    <view class="title">
       <cc-collapse v-model="value3" accordion>
         <cc-collapse-item
           name="1"
@@ -112,8 +112,8 @@
           <template #value> 轨迹 </template>
         </cc-collapse-item>
       </cc-collapse>
-    </div>
-  </div>
+    </view>
+  </view>
 </template>
 
 <script setup lang="ts">

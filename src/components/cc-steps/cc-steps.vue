@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import { provide, computed, useSlots, ComponentInternalInstance, ref } from 'vue'
+import { provide, computed, ComponentInternalInstance, ref } from 'vue'
 import { stepsKey } from './constants'
 
 const props = withDefaults(
@@ -34,7 +34,7 @@ const changeEvent = (val: number) => {
   emits('change', val)
 }
 
-const addChild = (child: ComponentInternalInstance) => {
+const addChild = child => {
   children.value.push(child)
 }
 

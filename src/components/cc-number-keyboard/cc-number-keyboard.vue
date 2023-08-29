@@ -1,36 +1,38 @@
 <template>
   <cc-popup mode="bottom" v-model="modelValue" ref="popup">
-    <div class="cc-number-keyboard">
-      <div class="cc-number-keyboard-tooltip" v-if="showTooltip">
-        <div
+    <view class="cc-number-keyboard">
+      <view class="cc-number-keyboard-tooltip" v-if="showTooltip">
+        <view
           class="cc-number-keyboard-tooltip-cancel"
           v-if="showTooltip && showCancelBtn"
           @click="cancel"
         >
           {{ cancelText }}
-        </div>
-        <div class="cc-number-keyboard-tooltip-text" v-if="showTooltip && showTips">{{ tips }}</div>
-        <div
+        </view>
+        <view class="cc-number-keyboard-tooltip-text" v-if="showTooltip && showTips">{{
+          tips
+        }}</view>
+        <view
           class="cc-number-keyboard-tooltip-confirm"
           v-if="showTooltip && showConfirmBtn"
           @click="confirm"
         >
           {{ confirmText }}
-        </div>
-      </div>
-      <div class="cc-number-keyboard-wrap">
-        <div class="cc-number-keyboard-wrap-content">
-          <div
+        </view>
+      </view>
+      <view class="cc-number-keyboard-wrap">
+        <view class="cc-number-keyboard-wrap-content">
+          <view
             class="cc-number-keyboard-wrap-content-item"
             v-for="(item, index) in keyboardItem"
             :key="index"
             @click="clickItem(item, index)"
           >
-            <div class="cc-number-keyboard-wrap-content-item-key" v-html="item"></div>
-          </div>
-        </div>
-      </div>
-    </div>
+            <view class="cc-number-keyboard-wrap-content-item-key" v-html="item"></view>
+          </view>
+        </view>
+      </view>
+    </view>
   </cc-popup>
 </template>
 

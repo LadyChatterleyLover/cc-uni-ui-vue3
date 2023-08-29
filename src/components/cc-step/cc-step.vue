@@ -68,7 +68,7 @@ import {
 } from 'vue'
 import { stepsKey } from '../cc-steps/constants'
 
-const props = withDefaults(
+withDefaults(
   defineProps<{
     name?: string
     icon?: string
