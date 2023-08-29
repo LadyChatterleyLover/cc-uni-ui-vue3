@@ -284,6 +284,12 @@
       "style": {
         "navigationBarTitleText": "swipeCell"
       }
+    },
+    {
+      "path": "pages/tabbar/index",
+      "style": {
+        "navigationBarTitleText": "tabbar"
+      }
     }
   ],
   "globalStyle": {
