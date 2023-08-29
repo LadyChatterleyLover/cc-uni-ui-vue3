@@ -254,6 +254,12 @@
       "style": {
         "navigationBarTitleText": "notify"
       }
+    },
+    {
+      "path": "pages/slideVerify/index",
+      "style": {
+        "navigationBarTitleText": "slideVerify"
+      }
     }
   ],
   "globalStyle": {
