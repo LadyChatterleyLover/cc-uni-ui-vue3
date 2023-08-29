@@ -185,11 +185,6 @@ const list: ListItem[] = [
         url: '/pages/overlay/index',
       },
       {
-        title: 'PullRefresh',
-        label: '下拉刷新',
-        url: '/pages/pullRefresh/index',
-      },
-      {
         title: 'SwipeCell',
         label: '滑动单元格',
         url: '/pages/swipeCell/index',

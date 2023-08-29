@@ -242,6 +242,15 @@
           "titleNView": false
         }
       }
+    },
+    {
+      "path": "pages/swiper/index",
+      "style": {
+        "navigationBarTitleText": "swiper",
+        "h5": {
+          "titleNView": false
+        }
+      }
     }
   ],
   "globalStyle": {
