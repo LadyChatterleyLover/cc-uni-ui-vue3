@@ -290,6 +290,12 @@
       "style": {
         "navigationBarTitleText": "tabbar"
       }
+    },
+    {
+      "path": "pages/grid/index",
+      "style": {
+        "navigationBarTitleText": "grid"
+      }
     }
   ],
   "globalStyle": {
