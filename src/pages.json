@@ -221,6 +221,12 @@
       "style": {
         "navigationBarTitleText": "tabs"
       }
+    },
+    {
+      "path": "pages/sidebar/index",
+      "style": {
+        "navigationBarTitleText": "sidebar"
+      }
     }
   ],
   "globalStyle": {

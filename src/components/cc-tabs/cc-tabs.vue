@@ -84,7 +84,6 @@ const init = () => {
     .in(this)
     .selectAll('.cc-tabs-content')
     .boundingClientRect(res => {
-      console.log('res', res)
       let x = 0
       for (let i = 0; i < props.modelValue; i++) {
         x += res[i].width
