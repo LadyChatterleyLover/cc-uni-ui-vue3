@@ -227,6 +227,12 @@
       "style": {
         "navigationBarTitleText": "sidebar"
       }
+    },
+    {
+      "path": "pages/alert/index",
+      "style": {
+        "navigationBarTitleText": "alert"
+      }
     }
   ],
   "globalStyle": {
