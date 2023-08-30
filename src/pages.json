@@ -302,6 +302,12 @@
       "style": {
         "navigationBarTitleText": "contactCard"
       }
+    },
+    {
+      "path": "pages/contactList/index",
+      "style": {
+        "navigationBarTitleText": "contactList"
+      }
     }
   ],
   "globalStyle": {
