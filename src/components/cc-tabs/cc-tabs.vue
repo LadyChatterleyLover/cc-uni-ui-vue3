@@ -2,10 +2,17 @@
   <view class="cc-tabs">
     <scroll-view scroll-x :scroll-left="scrollLeft" :scroll-with-animation="animation">
       <view class="cc-tabs-wrap">
-        <slot></slot>
+        <view
+          class="cc-tabs-content"
+          @click="clickItem(index)"
+          v-for="(item, index) in labels"
+          :key="index"
+        >
+          <view class="cc-tabs-content-title">{{ item }}</view>
+        </view>
       </view>
       <view
-        v-if="modelValue === index"
+        v-if="modelValue === currentIndex"
         class="cc-tabs-line"
         :style="{
           transform: `translateX(${translateX}px)`,
@@ -15,11 +22,14 @@
         }"
       ></view>
     </scroll-view>
+    <view>
+      <slot></slot>
+    </view>
   </view>
 </template>
 
 <script setup lang="ts">
-import { ref, provide, ComponentInternalInstance, computed, watch, onMounted } from 'vue'
+import { ref, provide, ComponentInternalInstance, computed, watch, onMounted, nextTick } from 'vue'
 import { tabsKey } from './constants'
 import { uni } from '@dcloudio/uni-h5'
 import { rpxToPx } from '../../utils/common'
@@ -58,8 +68,12 @@ const emits = defineEmits<{
 
 const translateX = ref(0)
 const scrollLeft = ref(0)
-const index = ref(0)
+const currentIndex = ref(0)
 const children = ref<ComponentInternalInstance[]>([])
+
+const labels = computed(() => {
+  return children.value.map(item => (item.proxy as any).title)
+})
 
 const changeEvent = (val: number) => {
   emits('update:modelValue', val)
@@ -70,32 +84,46 @@ const addChild = child => {
   children.value.push(child)
 }
 
-const setIndex = (i: number) => {
-  index.value = i
-}
-
-const setScrollLeft = (left: number) => {
-  scrollLeft.value = left
-}
-
-const init = () => {
+const clickItem = (index: number) => {
+  currentIndex.value = index
   uni
     .createSelectorQuery()
     .in(this)
     .selectAll('.cc-tabs-content')
     .boundingClientRect(res => {
-      let x = 0
-      for (let i = 0; i < props.modelValue; i++) {
-        x += res[i].width
-      }
-      translateX.value =
-        x - rpxToPx(props.lineWidth) + (res[props.modelValue].width + rpxToPx(props.lineWidth)) / 2
+      let width = res[index].width
+      let offsetLeft = res[index].left
+      let left = offsetLeft - (width - (props.lineWidth as number)) / 2
+      scrollLeft.value = left < 0 ? 0 : left
     })
     .exec()
+  changeEvent(index)
+  setBarPosition()
+}
+
+const setBarPosition = () => {
+  nextTick(() => {
+    console.log('props.modelValue', props.modelValue)
+    uni
+      .createSelectorQuery()
+      .in(this)
+      .selectAll('.cc-tabs-content')
+      .boundingClientRect(res => {
+        let x = 0
+        for (let i = 0; i < props.modelValue; i++) {
+          x += res[i].width
+        }
+        translateX.value =
+          x -
+          rpxToPx(props.lineWidth) +
+          (res[props.modelValue].width + rpxToPx(props.lineWidth)) / 2
+      })
+      .exec()
+  })
 }
 
 onMounted(() => {
-  init()
+  setBarPosition()
 })
 
 provide(tabsKey, {
@@ -106,16 +134,13 @@ provide(tabsKey, {
   lineColor: props.lineColor,
   activeColor: props.activeColor,
   inactiveColor: props.inactiveColor,
-  change: changeEvent,
-  setIndex,
   addChild,
-  setScrollLeft,
 })
 
 watch(
   () => props.modelValue,
   () => {
-    init()
+    setBarPosition()
   }
 )
 </script>
@@ -135,6 +160,17 @@ scroll-view ::v-deep ::-webkit-scrollbar {
     flex: 1;
     display: flex;
     align-items: center;
+  }
+  &-content {
+    flex: 1 0 auto;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    &-title {
+      padding: 0px 20rpx;
+      font-size: 12px;
+      margin-bottom: 20rpx;
+    }
   }
   &-line {
     border-radius: 3px;

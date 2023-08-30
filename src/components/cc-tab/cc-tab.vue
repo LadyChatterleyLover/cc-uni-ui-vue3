@@ -1,10 +1,5 @@
 <template>
-  <view class="cc-tabs-content" @click="clickItem">
-    <view class="cc-tabs-content-title">
-      <view :class="{ disabled }" v-if="$slots.default"><slot></slot></view>
-      <view v-else>{{ title }}</view>
-    </view>
-  </view>
+  <view :style="{ display: tabs?.active.value === index ? 'block' : 'none' }"><slot></slot></view>
 </template>
 
 <script setup lang="ts">
@@ -17,44 +12,26 @@ import {
   ref,
 } from 'vue'
 import { tabsKey } from '../cc-tabs/constants'
-import { uni } from '@dcloudio/uni-h5'
 
-const props = withDefaults(
+withDefaults(
   defineProps<{
     // 标题
     title?: string
+    // 标识符
+    name?: string
     // 是否禁用
     disabled?: boolean
   }>(),
   {
     title: '',
+    name: '',
     disabled: false,
   }
 )
 
 const tabs = inject(tabsKey, undefined)
 const instance = getCurrentInstance()
-
-const index = ref(0)
-
-const clickItem = () => {
-  if (props.disabled) {
-    return
-  }
-  tabs?.setIndex(index.value)
-  tabs?.change(index.value)
-  uni
-    .createSelectorQuery()
-    .in(this)
-    .selectAll('.cc-tabs-content')
-    .boundingClientRect(res => {
-      let width = res[index.value].width
-      let offsetLeft = res[index.value].left
-      let left = offsetLeft - (width - (tabs?.lineWidth as number)) / 2
-      tabs?.setScrollLeft(left < 0 ? 0 : left)
-    })
-    .exec()
-}
+const index = ref(-1)
 
 onMounted(() => {
   tabs?.addChild(instance as ComponentInternalInstance)
@@ -65,17 +42,6 @@ onMounted(() => {
 </script>
 
 <style scoped lang="scss">
-.cc-tabs-content {
-  flex: 1 0 auto;
-  display: flex;
-  justify-content: center;
-  position: relative;
-  &-title {
-    padding: 0px 20rpx;
-    font-size: 12px;
-    margin-bottom: 20rpx;
-  }
-}
 .disabled {
   color: #c8c9cc;
   background-color: #f7f8fa;

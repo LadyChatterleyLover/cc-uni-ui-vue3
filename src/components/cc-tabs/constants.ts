@@ -8,9 +8,6 @@ export interface TabsContext {
   lineColor?: string
   activeColor?: string
   inactiveColor?: string
-  change: (val: number) => void
-  setIndex: (val: number) => void
-  setScrollLeft: (val: number) => void
   addChild: (val: ComponentInternalInstance) => void
 }
 
