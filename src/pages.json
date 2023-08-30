@@ -296,6 +296,12 @@
       "style": {
         "navigationBarTitleText": "grid"
       }
+    },
+    {
+      "path": "pages/contactCard/index",
+      "style": {
+        "navigationBarTitleText": "contactCard"
+      }
     }
   ],
   "globalStyle": {

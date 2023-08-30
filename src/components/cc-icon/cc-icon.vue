@@ -31,7 +31,7 @@ const props = withDefaults(
   {
     type: '',
     color: '#333',
-    size: 16,
+    size: 32,
     customPrefix: '',
   }
 )
