@@ -47,7 +47,9 @@ onMounted(() => {
     timingFunction: 'linear',
   })
 })
-
+const close = () => {
+  emits('update:modelValue', !props.modelValue)
+}
 const handleClick = (e: Event) => {
   if (props.closeOnClickOverlay) {
     emits('update:modelValue', !props.modelValue)
@@ -85,6 +87,10 @@ const stopWatch = watch(
 onUnmounted(() => {
   stopWatch()
   cleanup()
+})
+
+defineExpose({
+  close,
 })
 </script>
 

@@ -103,7 +103,6 @@ const clickItem = (index: number) => {
 
 const setBarPosition = () => {
   nextTick(() => {
-    console.log('props.modelValue', props.modelValue)
     uni
       .createSelectorQuery()
       .in(this)

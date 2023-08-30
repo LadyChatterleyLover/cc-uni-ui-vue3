@@ -326,6 +326,12 @@
       "style": {
         "navigationBarTitleText": "submitBar"
       }
+    },
+    {
+      "path": "pages/coupon/index",
+      "style": {
+        "navigationBarTitleText": "coupon"
+      }
     }
   ],
   "globalStyle": {
