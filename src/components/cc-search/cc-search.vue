@@ -54,7 +54,7 @@
         </view>
       </view>
     </view>
-    <view class="cc-search-action" @click="cancel">
+    <view v-if="$slots.action || actionText" class="cc-search-action" @click="cancel">
       <view v-if="$slots.action">
         <slot name="action"></slot>
       </view>

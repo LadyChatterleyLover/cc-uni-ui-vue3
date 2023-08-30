@@ -5,7 +5,7 @@
     :class="{ flex }"
     :style="{ zIndex: Number(zIndex), background }"
     :animation="animationData"
-    @click="handleClick"
+    @click.stop="handleClick"
   >
     <slot></slot>
   </view>
@@ -34,7 +34,10 @@ const props = withDefaults(
   }
 )
 
-const emits = defineEmits(['update:modelValue', 'click'])
+const emits = defineEmits<{
+  'update:modelValue': [val: boolean]
+  click: [e: Event]
+}>()
 
 const zIndex = ref<number>(Number(props.zIndex))
 const animation = ref<any>({})
@@ -48,7 +51,7 @@ onMounted(() => {
   })
 })
 const close = () => {
-  emits('update:modelValue', !props.modelValue)
+  emits('update:modelValue', false)
 }
 const handleClick = (e: Event) => {
   if (props.closeOnClickOverlay) {
