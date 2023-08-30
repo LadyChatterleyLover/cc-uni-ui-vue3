@@ -308,6 +308,12 @@
       "style": {
         "navigationBarTitleText": "contactList"
       }
+    },
+    {
+      "path": "pages/area/index",
+      "style": {
+        "navigationBarTitleText": "area"
+      }
     }
   ],
   "globalStyle": {
