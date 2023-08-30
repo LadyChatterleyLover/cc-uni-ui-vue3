@@ -338,6 +338,12 @@
       "style": {
         "navigationBarTitleText": "pagination"
       }
+    },
+    {
+      "path": "pages/passwordInput/index",
+      "style": {
+        "navigationBarTitleText": "passwordInput"
+      }
     }
   ],
   "globalStyle": {
