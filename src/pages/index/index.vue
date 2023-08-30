@@ -295,6 +295,11 @@ const list: ListItem[] = [
     title: '导航组件',
     item: [
       {
+        title: 'ActionBar',
+        label: '动作栏',
+        url: '/pages/ActionBar/index',
+      },
+      {
         title: 'Grid',
         label: '宫格',
         url: '/pages/grid/index',
@@ -378,11 +383,6 @@ const list: ListItem[] = [
         title: 'ContactList',
         label: '联系人列表',
         url: '/pages/contactList/index',
-      },
-      {
-        title: 'GoodsAction',
-        label: '商品导航',
-        url: '/pages/goodsAction/index',
       },
       {
         title: 'SubmitBar',
