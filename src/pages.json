@@ -344,6 +344,12 @@
       "style": {
         "navigationBarTitleText": "passwordInput"
       }
+    },
+    {
+      "path": "pages/progress/index",
+      "style": {
+        "navigationBarTitleText": "progress"
+      }
     }
   ],
   "globalStyle": {
