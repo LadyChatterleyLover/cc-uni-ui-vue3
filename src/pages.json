@@ -332,6 +332,12 @@
       "style": {
         "navigationBarTitleText": "coupon"
       }
+    },
+    {
+      "path": "pages/pagination/index",
+      "style": {
+        "navigationBarTitleText": "pagination"
+      }
     }
   ],
   "globalStyle": {
