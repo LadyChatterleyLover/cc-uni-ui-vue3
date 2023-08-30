@@ -314,6 +314,12 @@
       "style": {
         "navigationBarTitleText": "area"
       }
+    },
+    {
+      "path": "pages/goodsCard/index",
+      "style": {
+        "navigationBarTitleText": "goodsCard"
+      }
     }
   ],
   "globalStyle": {
